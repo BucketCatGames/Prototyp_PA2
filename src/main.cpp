@@ -4,6 +4,7 @@
 #include <raymath.h>
 #include <vector>
 #include "config.h"
+#include "cmath"
 
 struct Player
 {
