@@ -1,13 +1,15 @@
 ﻿#include <cstdlib>
-
+#include <iostream>
 #include "raylib.h"
-
+#include <raymath.h>
+#include <vector>
 #include "config.h"
 
 struct Player
 {
 	float posX;
 	float posY;
+	//std::vector<float, float> playerPos = { posX, posY };
 	float speed;
 	float xVel;
 	float yVel;
@@ -59,6 +61,19 @@ void PlayerInput(Player& player)
 	{
 		player.xVel = 0;
 	}
+
+	player.posX = Clamp(player.posX, 0.0f, GetScreenWidth() - player.texture.width);
+	player.posY = Clamp(player.posY, 0.0f, GetScreenHeight() - player.texture.height);
+
+	if(player.xVel != 0 && player.yVel != 0)
+	{
+		player.xVel *= 0.7071;
+		player.yVel *= 0.7071;
+	}
+
+	player.posX += player.xVel;
+	player.posY += player.yVel;
+	
 }
 void DrawPlayer(Player& player)
 {
@@ -76,7 +91,6 @@ int main() {
 #endif
 
 	Player player;
-
 	
 	InitPlayer(player);
 
@@ -94,7 +108,7 @@ int main() {
 
 		EndDrawing();
 	}
-	//UnloadTexture(myTexture);
+	UnloadTexture(player.texture);
 
 	// Close window and OpenGL context
 	CloseWindow();
