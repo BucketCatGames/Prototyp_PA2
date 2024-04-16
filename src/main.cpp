@@ -28,21 +28,23 @@ int main() {
 	// Main game loop
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
-
+		GetMousePos(mouse);
+		IsCursorOnScreen(mouse);
 		PlayerInput(player);
 		UpdatePlayer(player);
 
-		IsCursorOnScreen(mouse);
-		GetMousePos(mouse);
+
 
 		BeginDrawing();
 		ClearBackground(WHITE);
 
 		DrawPlayer(player);
 
-		while (mouse.isOnScreen == true)
+		if (mouse.isOnScreen == true)
 		{
 			DrawText("mouse", 100, 100, 10, RED);
+			DrawText(FormatText("x: %f", mouse.posX), 100, 120, 10, RED);
+			DrawText(FormatText("y: %f", mouse.posY), 100, 140, 10, RED);
 		}
 
 		EndDrawing();

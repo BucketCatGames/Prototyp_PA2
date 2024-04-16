@@ -12,15 +12,21 @@ void GetMousePos(Mouse& mouse)
 {
 	mouse.posX = GetMouseX();
 	mouse.posY = GetMouseY();
+	mouse.isOnScreen = false;
+
 }
 
 void IsCursorOnScreen(Mouse& mouse)
 {
-	while (mouse.posX >= 0 && mouse.posX <= GetScreenWidth() && mouse.posY >= 0 && mouse.posY <= GetScreenHeight())
+	mouse.posX = GetMouseX();
+	mouse.posY = GetMouseY();
+
+
+	if (mouse.posX >= 0 && mouse.posX <= GetScreenWidth() && mouse.posY >= 0 && mouse.posY <= GetScreenHeight())
 	{
 		mouse.isOnScreen = true;
 	}
-	if (mouse.posX < 0 || mouse.posX > GetScreenWidth() || mouse.posY < 0 || mouse.posY > GetScreenHeight())
+	else
 	{
 		mouse.isOnScreen = false;
 	}
