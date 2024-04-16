@@ -75,6 +75,7 @@ void PlayerInput(Player& player)
 	player.posY += player.yVel;
 	
 }
+
 void DrawPlayer(Player& player)
 {
 	DrawTexture(player.texture, player.posX, player.posY, BLACK);
