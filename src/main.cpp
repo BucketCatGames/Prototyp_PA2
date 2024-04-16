@@ -6,7 +6,8 @@
 #include "config.h"
 #include "cmath"
 
-//das ist ein test
+//das ist ein test2.0
+//xx 
 struct Player
 {
 	float posX;
