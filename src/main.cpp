@@ -6,6 +6,9 @@
 #include "config.h"
 #include "cmath"
 #include "Player.h"
+#include "Mouse.h"
+
+
 
 int main() {
 	// Raylib initialization
@@ -18,20 +21,29 @@ int main() {
 #endif
 
 	Player player;
-	
+	Mouse mouse;
+
 	InitPlayer(player);
 
 	// Main game loop
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
+
 		PlayerInput(player);
 		UpdatePlayer(player);
 
+		IsCursorOnScreen(mouse);
+		GetMousePos(mouse);
 
 		BeginDrawing();
 		ClearBackground(WHITE);
 
 		DrawPlayer(player);
+
+		while (mouse.isOnScreen == true)
+		{
+			DrawText("mouse", 100, 100, 10, RED);
+		}
 
 		EndDrawing();
 	}
