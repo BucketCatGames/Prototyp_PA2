@@ -66,12 +66,10 @@ void PlayerInput(Player& player)
 	player.posX = Clamp(player.posX, 0.0f, GetScreenWidth() - player.texture.width);
 	player.posY = Clamp(player.posY, 0.0f, GetScreenHeight() - player.texture.height);
 
-	if(player.xVel != 0 && player.yVel != 0)
-	{
-		player.xVel *= 0.7071;
-		player.yVel *= 0.7071;
-	}
-
+	Vector2 playerVelocity = { player.xVel, player.yVel };
+	playerVelocity = Vector2Normalize(playerVelocity);
+	player.xVel = playerVelocity.x * player.speed;
+	
 	player.posX += player.xVel;
 	player.posY += player.yVel;
 	
