@@ -50,13 +50,6 @@ int main() {
 		BallOnMouse(mouse);
 		DrawBullet(bullets);
 
-		if (mouse.isOnScreen == true)
-		{
-			DrawText("mouse", 100, 100, 10, RED);
-
-		}
-
-
 		EndDrawing();
 	}
 	UnloadTexture(player.texture);
