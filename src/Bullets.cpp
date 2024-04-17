@@ -9,27 +9,37 @@
 #include "Bullets.h"
 
 
-void DrawBullet(Bullets& bullet)
+void BulletTexture(Bullets& bullet)
 {
 	bullet.textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
 }
 
-void ShootBullet(Player& player, Mouse& mouse, Bullets& bullet)
+void InitBullet(Player& player, Mouse& mouse, Bullets& bullet)
 {
-		Vector2 shootDirVector;
-		shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
-		shootDirVector = bullet.shootDirVector;
+	Vector2 shootDirVector;
+	shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
+	shootDirVector = bullet.shootDirVector;
 
-		/*Bullets bullet;
-		bullet.bulletSpawnVector = player.playerPosVector;
-		bullet.shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
-		bullet.shootDirVector = Vector2Normalize(bullet.shootDirVector);
-		bullet.shootDirVector = Vector2Scale(bullet.shootDirVector, 10);*/
+
+	bullet.bulletSpawnVector = player.playerPosVector;
+	bullet.shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
+	bullet.shootDirVector = Vector2Normalize(bullet.shootDirVector);
+	bullet.shootDirVector = Vector2Scale(bullet.shootDirVector, 10);
+
 }
-
+void DrawBullet(Bullets& bullet)
+{
+	DrawTexture(bullet.textureBullet, bullet.bulletSpawnVector.x, bullet.bulletSpawnVector.y, RAYWHITE);
+}
 void UpdateBullet(Bullets& bullet)
 {
-	//bullet.bulletSpawnVector = Vector2Add(bullet.bulletSpawnVector, bullet.shootDirVector);
-	//DrawTexture(bullet.textureBullet, bullet.bulletSpawnVector.x, bullet.bulletSpawnVector.y, RAYWHITE);
-	DrawTexture(bullet.textureBullet, 100, 100, RAYWHITE);
+	bullet.bulletSpawnVector = Vector2Add(bullet.bulletSpawnVector, bullet.shootDirVector);
+	DrawTextureV(bullet.textureBullet, bullet.bulletSpawnVector, RAYWHITE);
+	//DrawTexture(bullet.textureBullet, 100, 100, RAYWHITE);
+}
+
+void ShootBullet(Player& player, Mouse& mouse, Bullets& bullet)
+{
+	InitBullet(player, mouse, bullet);
+
 }

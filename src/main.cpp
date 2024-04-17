@@ -38,21 +38,24 @@ int main() {
 
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
-			DrawBullet(bullets);
-			ShootBullet(player, mouse, bullets);
+			InitBullet(player, mouse, bullets);
+			BulletTexture(bullets);
 		}
-			BeginDrawing();
 
-			ClearBackground(WHITE);
-			DrawPlayer(player);
-			BallOnMouse(mouse);
+		BeginDrawing();
+		
+		ClearBackground(WHITE);
 		UpdateBullet(bullets);
+		DrawPlayer(player);
+		BallOnMouse(mouse);
+		DrawBullet(bullets);
 
 		if (mouse.isOnScreen == true)
 		{
 			DrawText("mouse", 100, 100, 10, RED);
 
 		}
+		
 
 		EndDrawing();
 	}
