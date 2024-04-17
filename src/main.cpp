@@ -35,10 +35,7 @@ int main() {
 		IsCursorOnScreen(mouse);
 		PlayerInput(player);
 		UpdatePlayer(player);
-		ShootBullet(player, mouse, bullets);
-		DrawBullet(bullets);
 
-<<<<<<< HEAD
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
 			InitBullet(player, mouse, bullets);
@@ -46,15 +43,8 @@ int main() {
 		}
 
 		BeginDrawing();
-		
-		ClearBackground(WHITE);
-=======
-		BeginDrawing();
 
 		ClearBackground(WHITE);
-		DrawPlayer(player);
-		BallOnMouse(mouse);
->>>>>>> parent of 3b9e9f5 (Texture drawed; noch keine Bewegung/Rechnung)
 		UpdateBullet(bullets);
 		DrawPlayer(player);
 		BallOnMouse(mouse);
@@ -63,9 +53,9 @@ int main() {
 		if (mouse.isOnScreen == true)
 		{
 			DrawText("mouse", 100, 100, 10, RED);
-			
+
 		}
-		
+
 
 		EndDrawing();
 	}
