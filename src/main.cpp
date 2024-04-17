@@ -33,18 +33,16 @@ int main() {
 		PlayerInput(player);
 		UpdatePlayer(player);
 
-
-
 		BeginDrawing();
-		ClearBackground(WHITE);
 
+		ClearBackground(WHITE);
 		DrawPlayer(player);
+		BallOnMouse(mouse);
 
 		if (mouse.isOnScreen == true)
 		{
 			DrawText("mouse", 100, 100, 10, RED);
-			DrawText(FormatText("x: %f", mouse.posX), 100, 120, 10, RED);
-			DrawText(FormatText("y: %f", mouse.posY), 100, 140, 10, RED);
+			
 		}
 
 		EndDrawing();

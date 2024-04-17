@@ -14,6 +14,8 @@ struct Player
 	float xVel;
 	float yVel;
 
+	Vector2 playerPosVector;
+
 	Texture2D texture;
 };
 

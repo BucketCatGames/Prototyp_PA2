@@ -7,13 +7,14 @@
 #include "config.h"
 #include "cmath"
 
-
+//void Mouse::Update()
+//{
+//	GetMousePos(*this);
+//	IsCursorOnScreen(*this);
+//}
 void GetMousePos(Mouse& mouse)
 {
-	mouse.posX = GetMouseX();
-	mouse.posY = GetMouseY();
-	mouse.isOnScreen = false;
-
+	Vector2 mousePosVector = GetMousePosition();
 }
 
 void IsCursorOnScreen(Mouse& mouse)
@@ -32,3 +33,8 @@ void IsCursorOnScreen(Mouse& mouse)
 	}
 }
 
+void BallOnMouse(Mouse& mouse)
+{
+	mouse.mousePosVector = GetMousePosition();
+	DrawCircleV(mouse.mousePosVector, 20, RED);
+}
