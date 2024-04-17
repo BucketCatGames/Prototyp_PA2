@@ -1,4 +1,5 @@
-﻿#include <cstdlib>
+﻿#pragma once
+#include <cstdlib>
 #include <iostream>
 #include "raylib.h"
 #include <raymath.h>
@@ -7,6 +8,7 @@
 #include "cmath"
 #include "Player.h"
 #include "Mouse.h"
+#include "Bullets.h"
 
 
 
@@ -22,6 +24,7 @@ int main() {
 
 	Player player;
 	Mouse mouse;
+	Bullets bullets;
 
 	InitPlayer(player);
 
@@ -32,12 +35,15 @@ int main() {
 		IsCursorOnScreen(mouse);
 		PlayerInput(player);
 		UpdatePlayer(player);
+		ShootBullet(player, mouse, bullets);
+		DrawBullet(bullets);
 
 		BeginDrawing();
 
 		ClearBackground(WHITE);
 		DrawPlayer(player);
 		BallOnMouse(mouse);
+		UpdateBullet(bullets);
 
 		if (mouse.isOnScreen == true)
 		{

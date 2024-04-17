@@ -1,3 +1,4 @@
+#pragma once
 #include "Mouse.h"
 #include <cstdlib>
 #include <iostream>
@@ -6,6 +7,7 @@
 #include <vector>
 #include "config.h"
 #include "cmath"
+#include "Player.h"
 
 //void Mouse::Update()
 //{
