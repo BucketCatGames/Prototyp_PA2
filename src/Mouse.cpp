@@ -14,12 +14,12 @@
 //	GetMousePos(*this);
 //	IsCursorOnScreen(*this);
 //}
-void GetMousePos(Mouse& mouse)
+void Mouse::GetMousePos(Mouse& mouse)
 {
 	Vector2 mousePosVector = GetMousePosition();
 }
 
-void IsCursorOnScreen(Mouse& mouse)
+void Mouse::IsCursorOnScreen(Mouse& mouse)
 {
 	mouse.posX = GetMouseX();
 	mouse.posY = GetMouseY();
@@ -35,8 +35,9 @@ void IsCursorOnScreen(Mouse& mouse)
 	}
 }
 
-void BallOnMouse(Mouse& mouse)
+void Mouse::BallOnMouse(Mouse& mouse)
 {
 	mouse.mousePosVector = GetMousePosition();
 	DrawCircleV(mouse.mousePosVector, 20, RED);
 }
+
