@@ -59,7 +59,7 @@ void Bullets::DrawBullet()
 {
 	if (active)
 	{
-		DrawTexture(textureBullet, bulletSpawnVector.x, bulletSpawnVector.y, RAYWHITE);
+		DrawTexture(textureBullet, 100, 100, RAYWHITE);
 	}
 }
 
@@ -67,25 +67,22 @@ void Bullets::UpdateBullet(Bullets& bullet)
 {
 	//bulletSpawnVector = Vector2Add(bulletSpawnVector, shootDirVector);
 	bullet.bulletTimer += GetFrameTime();
-
-	do
+	if (bullet.bulletTimer >= bullet.bulletTimerMax)
 	{
 		bullet.DrawBullet();
 		bulletSpawnVector.y += speed;
-	} while (bullet.bulletTimer >= bullet.bulletTimerMax);
-	//{
-		
-		
-	// }
-	//bulletSpawnVector.y += speed;
-	/*if (active)
-	{
-		float time = 0;
-		time += GetFrameTime();
-		if (time += 2.0f)
-		{
-			active = false;
-		}
-	}*/
 
+		// }
+		//bulletSpawnVector.y += speed;
+		/*if (active)
+		{
+			float time = 0;
+			time += GetFrameTime();
+			if (time += 2.0f)
+			{
+				active = false;
+			}
+		}*/
+
+	}
 }

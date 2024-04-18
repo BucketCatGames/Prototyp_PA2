@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Mouse.h"
 #include "Bullets.h"
+#include "GameControls.h"
 
 
 
@@ -24,10 +25,11 @@ int main() {
 
 	Player player;
 	Mouse mouse;
-	Bullets bullets = Bullets(Vector2{ 0, 0 }, Vector2{ 0, 0 }, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 10);
+
+	Bullets bullets = Bullets(Vector2{ 0, 0 }, Vector2{ 0, 0 }, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 1);
 
 
-	InitPlayer(player);
+	player.InitPlayer(player);
 	
 
 	// Main game loop
@@ -35,36 +37,31 @@ int main() {
 	{
 		GetMousePos(mouse);
 		IsCursorOnScreen(mouse);
-		PlayerInput(player);
-		UpdatePlayer(player);
+		player.PlayerInput(player);
+		player.UpdatePlayer(player);
 
 
-		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-		{
+	
 			
 			bullets.UpdateBullet(bullets);
 			//bullets.drawable = true;
-		}
+		
 
 
 		BeginDrawing();
 
 		ClearBackground(WHITE);
-		//UpdateBullet(bullets);
-		DrawPlayer(player);
+		
+		player.DrawPlayer(player);
 		BallOnMouse(mouse);
 
-		if (bullets.drawable)
-		{
-			bullets.DrawBullet();
-	
-		}
+		bullets.DrawBullet();
 
 
 
 		EndDrawing();
 	}
-	UnloadTexture(player.texture);
+	//UnloadTexture(texture);
 
 	// Close window and OpenGL context
 	CloseWindow();

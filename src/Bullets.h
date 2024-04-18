@@ -26,17 +26,19 @@ class Bullets
 {
 public:
 	Bullets(Vector2 bulletSpawnVector, Vector2 shootDirVector, Texture2D textureBullet, int speed);
+	Vector2 bulletSpawnVector;
+	Vector2 shootDirVector;
 	void UpdateBullet(Bullets& bullet);
 	void DrawBullet();
-
+	//void Direction();
 	bool active;
 	bool drawable = false;
+	Texture2D textureBullet;
 
 private:
 
-	Vector2 bulletSpawnVector;
-	Vector2 shootDirVector;
-	Texture2D textureBullet;
+	
+
 	int speed;
 	int t;
 	float bulletTimer;

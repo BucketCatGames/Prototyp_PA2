@@ -8,24 +8,32 @@
 #include "config.h"
 #include "cmath"
 
-void InitPlayer(Player& player)
+Player::Player()
+{
+
+}
+Player::~Player()
+{
+	UnloadTexture(texture);
+};
+
+void Player::InitPlayer(Player& player)
 {
 	player.posX = 100;
 	player.posY = 100;
 	player.speed = 5;
 	player.xVel = 0;
 	player.yVel = 0;
-
-	player.texture = LoadTexture("assets/graphics/testimage.png");
+	texture = LoadTexture("assets/graphics/testimage.png");
 }
 
-void UpdatePlayer(Player& player)
+void Player::UpdatePlayer(Player& player)
 {
 	player.posX += player.xVel;
 	player.posY += player.yVel;
 }
 
-void PlayerInput(Player& player)
+void Player::PlayerInput(Player& player)
 {
 	if (IsKeyDown(KEY_W))
 	{
@@ -66,7 +74,13 @@ void PlayerInput(Player& player)
 
 }
 
-void DrawPlayer(Player& player)
+void Player::DrawPlayer(Player& player)
 {
 	DrawTexture(player.texture, player.posX, player.posY, BLACK);
 }
+
+//void Player::ShootBullets(Player& player, Bullets& bullets)
+//{
+//	bulletVector.push_back(Bullets({ playerPosVector.x + player.texture.width / 2, playerPosVector.y + player.texture.height / 2 },
+//		bullets.shootDirVector, bullets.textureBullet, -7, player));
+//}

@@ -6,9 +6,15 @@
 #include <vector>
 #include "config.h"
 #include "cmath"
+#include "Bullets.h"
 
-struct Player
+
+class Player
 {
+public:
+	Player();
+	~Player();
+
 	float posX;
 	float posY;
 	float speed;
@@ -16,11 +22,18 @@ struct Player
 	float yVel;
 
 	Vector2 playerPosVector;
+//	std::vector<Bullets> bulletVector;
+
+	void InitPlayer(Player& player);
+	void UpdatePlayer(Player& player);
+	void PlayerInput(Player& player);
+	void DrawPlayer(Player& player);
+	//void ShootBullets(Player& player, Bullets& bullets);
+	
+
+private:
 
 	Texture2D texture;
+	
 };
 
-void InitPlayer(Player& player);
-void UpdatePlayer(Player& player);
-void PlayerInput(Player& player);
-void DrawPlayer(Player& player);
