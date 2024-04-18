@@ -24,7 +24,8 @@ int main() {
 
 	Player player;
 	Mouse mouse;
-	Bullets bullets;
+	Bullets bullets = Bullets(Vector2{ 0, 0 }, Vector2{ 0, 0 }, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 10);
+
 
 	InitPlayer(player);
 
@@ -36,19 +37,29 @@ int main() {
 		PlayerInput(player);
 		UpdatePlayer(player);
 
+
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
-			InitBullet(player, mouse, bullets);
-			BulletTexture(bullets);
+			
+			bullets.UpdateBullet();
+			bullets.drawable = true;
 		}
+
 
 		BeginDrawing();
 
 		ClearBackground(WHITE);
-		UpdateBullet(bullets);
+		//UpdateBullet(bullets);
 		DrawPlayer(player);
 		BallOnMouse(mouse);
-		DrawBullet(bullets);
+
+		if (bullets.drawable)
+		{
+			bullets.DrawBullet();
+	
+		}
+
+
 
 		EndDrawing();
 	}

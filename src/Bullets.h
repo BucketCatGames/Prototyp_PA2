@@ -9,7 +9,7 @@
 #include "Player.h"
 #include "Mouse.h"
 
-
+/*
 struct Bullets
 {
 	Vector2 bulletSpawnVector;
@@ -21,4 +21,21 @@ void DrawBullet(Bullets& bullet);
 void ShootBullet(Player& player, Mouse& mouse, Bullets& bullet);
 void UpdateBullet(Bullets& bullet);
 void InitBullet(Player& player, Mouse& mouse, Bullets& bullet);
-void BulletTexture(Bullets& bullet);
+void BulletTexture(Bullets& bullet);*/
+class Bullets
+{
+public:
+	Bullets(Vector2 bulletSpawnVector, Vector2 shootDirVector, Texture2D textureBullet, int speed);
+	void UpdateBullet();
+	void DrawBullet();
+
+	bool active;
+	bool drawable = false;
+
+private:
+
+	Vector2 bulletSpawnVector;
+	Vector2 shootDirVector;
+	Texture2D textureBullet;
+	int speed;
+};
