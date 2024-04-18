@@ -26,7 +26,7 @@ class Bullets
 {
 public:
 	Bullets(Vector2 bulletSpawnVector, Vector2 shootDirVector, Texture2D textureBullet, int speed);
-	void UpdateBullet();
+	void UpdateBullet(Bullets& bullet);
 	void DrawBullet();
 
 	bool active;
@@ -38,4 +38,7 @@ private:
 	Vector2 shootDirVector;
 	Texture2D textureBullet;
 	int speed;
+	int t;
+	float bulletTimer;
+	float bulletTimerMax;
 };

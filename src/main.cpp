@@ -28,6 +28,7 @@ int main() {
 
 
 	InitPlayer(player);
+	
 
 	// Main game loop
 	while (!WindowShouldClose()) // Detect window close button or ESC key
@@ -41,8 +42,8 @@ int main() {
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
 			
-			bullets.UpdateBullet();
-			bullets.drawable = true;
+			bullets.UpdateBullet(bullets);
+			//bullets.drawable = true;
 		}
 
 
