@@ -43,34 +43,34 @@
 //	InitBullet(player, mouse, bullet);
 //
 //}
-Bullets::Bullets(Vector2 bulletSpawnVector, Vector2 shootDirVector, Texture2D textureBullet, int speed)
+Bullets::Bullets()
 {
 	Player player = Player();
+	Mouse mouse = Mouse();
 	this->t = 2.0f;
+	this->bulletSpawnVector = {bulletPosX, bulletPosY};
 	this->bulletSpawnVector = player.playerPosVector;
-	this->shootDirVector = shootDirVector;
+	this->bulletPosX = 0;
+	this->bulletPosY = 0;
+	this->shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
 	this->textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
-	this->speed = speed;
+	this->speed = 5.0f;
 	this->active = true;
 	this->bulletTimer = t;
 	this->bulletTimerMax = t;
 }
 void Bullets::DrawBullet()
 {
-	if (active)
-	{
-		DrawTexture(textureBullet, 100, 100, RAYWHITE);
-	}
+	
+		DrawTexture(textureBullet, bulletPosX, bulletPosY, RAYWHITE);
+	
 }
 
 void Bullets::UpdateBullet(Bullets& bullet)
 {
 	//bulletSpawnVector = Vector2Add(bulletSpawnVector, shootDirVector);
-	bullet.bulletTimer += GetFrameTime();
-	if (bullet.bulletTimer >= bullet.bulletTimerMax)
-	{
-		bullet.DrawBullet();
-		bulletSpawnVector.y += speed;
+	
+		bulletPosY += speed;
 
 		// }
 		//bulletSpawnVector.y += speed;
@@ -84,5 +84,5 @@ void Bullets::UpdateBullet(Bullets& bullet)
 			}
 		}*/
 
-	}
+	
 }

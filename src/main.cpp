@@ -25,8 +25,7 @@ int main() {
 
 	Player player;
 	Mouse mouse;
-
-	Bullets bullets = Bullets(Vector2{ 0, 0 }, Vector2{ 0, 0 }, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 1);
+	Bullets bullets;
 
 
 	player.InitPlayer(player);
@@ -40,13 +39,10 @@ int main() {
 		player.PlayerInput(player);
 		player.UpdatePlayer(player);
 
-
-	
-			
+		
 			bullets.UpdateBullet(bullets);
 			//bullets.drawable = true;
-		
-
+			 
 
 		BeginDrawing();
 

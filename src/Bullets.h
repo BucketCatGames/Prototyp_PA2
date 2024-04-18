@@ -25,7 +25,10 @@ void BulletTexture(Bullets& bullet);*/
 class Bullets
 {
 public:
-	Bullets(Vector2 bulletSpawnVector, Vector2 shootDirVector, Texture2D textureBullet, int speed);
+	Bullets();
+	float bulletPosX;
+	float bulletPosY;
+	
 	Vector2 bulletSpawnVector;
 	Vector2 shootDirVector;
 	void UpdateBullet(Bullets& bullet);
