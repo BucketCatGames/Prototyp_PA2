@@ -27,6 +27,8 @@ public:
 	Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax);
 	float bulletPosX;
 	float bulletPosY;
+	float bulletTimer;
+	float bulletTimerMax;
 	
 	Vector2 bulletDirVector;
 	void UpdateBullet();
@@ -39,6 +41,5 @@ public:
 private:
 	int speed;
 	int t;
-	float bulletTimer;
-	float bulletTimerMax;
+
 };
