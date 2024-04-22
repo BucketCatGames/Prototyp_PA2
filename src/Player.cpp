@@ -25,12 +25,15 @@ void Player::InitPlayer(Player& player)
 	player.xVel = 0;
 	player.yVel = 0;
 	texture = LoadTexture("assets/graphics/testimage.png");
+	player.PlayerPosVector = { player.posX, player.posY };
+	player.PlayerVelVector = { player.xVel, player.yVel };
 }
 
 void Player::UpdatePlayer(Player& player)
 {
-	player.posX += player.xVel;
-	player.posY += player.yVel;
+	player.PlayerPosVector.x += player.PlayerVelVector.x;
+	player.PlayerPosVector.y += player.PlayerVelVector.y;
+
 }
 
 void Player::PlayerInput(Player& player)
@@ -65,7 +68,7 @@ void Player::PlayerInput(Player& player)
 	player.posY = Clamp(player.posY, 0.0f, GetScreenHeight() - player.texture.height);
 
 	Vector2 playerVelocity = { player.xVel, player.yVel };
-	Vector2 playerPosVector = player.playerPosVector;
+	Vector2 playerPosVector = player.PlayerPosVector;
 	playerVelocity = Vector2Normalize(playerVelocity);
 	player.xVel = playerVelocity.x * player.speed;
 

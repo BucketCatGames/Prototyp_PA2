@@ -7,6 +7,7 @@
 #include "config.h"
 #include "cmath"
 #include "Bullets.h"
+#include "Player.h"
 
 
 //void BulletTexture(Bullets& bullet)
@@ -45,19 +46,7 @@
 //}
 Bullets::Bullets()
 {
-	/*Player player = Player();
-	Mouse mouse = Mouse();
-	this->t = 2.0f;
-	this->bulletSpawnVector = {bulletPosX, bulletPosY};
-	this->bulletSpawnVector = player.playerPosVector;
-	this->bulletPosX = 0;
-	this->bulletPosY = 0;
-	this->shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
-	this->textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
-	this->speed = 5.0f;
-	this->active = true;
-	this->bulletTimer = t;
-	this->bulletTimerMax = t;*/
+
 }
 void Bullets::DrawBullet(Bullets& bullet)
 {
@@ -90,10 +79,10 @@ void Bullets::InitBullets(Bullets& bullet)
 	Mouse mouse = Mouse();
 	bullet.t = 2.0f;
 	bullet.bulletSpawnVector = { bullet.bulletPosX, bullet.bulletPosY };
-	bullet.bulletSpawnVector = player.playerPosVector;
+	bullet.bulletSpawnVector = player.PlayerPosVector;
 	bullet.bulletPosX = 0;
 	bullet.bulletPosY = 0;
-	bullet.shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
+//	bullet.shootDirVector = Vector2Subtract(mouse.mousePosVector, player.PlayerPosVector);
 	bullet.textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
 	bullet.speed = 5.0f;
 	bullet.active = false;

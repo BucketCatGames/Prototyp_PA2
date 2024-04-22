@@ -6,7 +6,6 @@
 #include <vector>
 #include "config.h"
 #include "cmath"
-#include "Player.h"
 #include "Mouse.h"
 
 /*
