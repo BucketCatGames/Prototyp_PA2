@@ -59,7 +59,7 @@ Bullets::Bullets()
 	this->bulletTimer = t;
 	this->bulletTimerMax = t;
 }
-void Bullets::DrawBullet()
+void Bullets::DrawBullet(Bullets& bullet)
 {
 	
 		DrawTexture(textureBullet, bulletPosX, bulletPosY, RAYWHITE);
@@ -85,4 +85,23 @@ void Bullets::UpdateBullet(Bullets& bullet)
 		}*/
 
 	
+}
+void Bullets::InitBullets()
+{
+	Player player = Player();
+	Mouse mouse = Mouse();
+	this->t = 2.0f;
+	this->bulletSpawnVector = { bulletPosX, bulletPosY };
+	this->bulletSpawnVector = player.playerPosVector;
+	this->bulletPosX = player.posX;
+	this->bulletPosY = player.posY;
+	this->shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
+	this->textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
+	this->speed = 5.0f;
+	this->active = false;
+	this->bulletTimer = t;
+	{
+
+		DrawTexture(textureBullet, bulletPosX, bulletPosY, RAYWHITE);
+	}
 }

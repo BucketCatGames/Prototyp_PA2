@@ -23,37 +23,21 @@ int main() {
 	ToggleFullscreen();
 #endif
 
-	Player player;
-	Mouse mouse;
+	GameInit game;
 	Bullets bullets;
 
-
-	player.InitPlayer(player);
-	
+	game.InitFunctions();
 
 	// Main game loop
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
-		GetMousePos(mouse);
-		IsCursorOnScreen(mouse);
-		player.PlayerInput(player);
-		player.UpdatePlayer(player);
-
-		
-			bullets.UpdateBullet(bullets);
-			//bullets.drawable = true;
-			 
+		game.HandleInput();
+		game.Update();
+		bullets.UpdateBullet(bullets);
 
 		BeginDrawing();
-
-		ClearBackground(WHITE);
-		
-		player.DrawPlayer(player);
-		BallOnMouse(mouse);
-
-		bullets.DrawBullet();
-
-
+		game.Draw();
+		bullets.DrawBullet(bullets);
 
 		EndDrawing();
 	}
