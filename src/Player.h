@@ -27,16 +27,16 @@ public:
 	
 	//std::vector<Bullets> bulletVector;
 
-	void InitPlayer(Player& player);
-	void UpdatePlayer(Player& player);
-	void PlayerInput(Player& player);
-	void DrawPlayer(Player& player);
-	//void ShootBullets();
+	void InitPlayer();
+	void UpdatePlayer();
+	void PlayerInput();
+	void DrawPlayer();
+	Bullets* ShootBullets();
 	
 private:
 
 	Texture2D texture;
-	Bullets bullets;
+	
 	
 };
 

@@ -1,5 +1,5 @@
-#pragma	once
-#include "Player.h"
+#pragma once
+#include "h"
 #include <cstdlib>
 #include <iostream>
 #include "raylib.h"
@@ -10,84 +10,77 @@
 
 Player::Player()
 {
-
+	InitPlayer();
 }
 Player::~Player()
 {
 	UnloadTexture(texture);
 };
 
-void Player::InitPlayer(Player& player)
+void Player::InitPlayer()
 {
-	player.posX = 100;
-	player.posY = 100;
-	player.speed = 5;
-	player.xVel = 0;
-	player.yVel = 0;
+	posX = 100;
+	posY = 100;
+	speed = 5;
+	xVel = 0;
+	yVel = 0;
 	texture = LoadTexture("assets/graphics/testimage.png");
-	player.PlayerPosVector = { player.posX, player.posY };
-	player.PlayerVelVector = { player.xVel, player.yVel };
+	PlayerPosVector = {posX, posY};
+	PlayerVelVector = {xVel, yVel};
 }
 
-void Player::UpdatePlayer(Player& player)
+void Player::UpdatePlayer()
 {
-	player.PlayerPosVector.x += player.PlayerVelVector.x;
-	player.PlayerPosVector.y += player.PlayerVelVector.y;
-
+	PlayerPosVector.x += PlayerVelVector.x;
+	PlayerPosVector.y += PlayerVelVector.y;
 }
 
-void Player::PlayerInput(Player& player)
+void Player::PlayerInput()
 {
 	if (IsKeyDown(KEY_W))
 	{
-		player.yVel = -player.speed;
+		yVel = -speed;
 	}
 	else if (IsKeyDown(KEY_S))
 	{
-		player.yVel = player.speed;
+		yVel = speed;
 	}
 	else
 	{
-		player.yVel = 0;
+		yVel = 0;
 	}
 
 	if (IsKeyDown(KEY_A))
 	{
-		player.xVel = -player.speed;
+		xVel = -speed;
 	}
 	else if (IsKeyDown(KEY_D))
 	{
-		player.xVel = player.speed;
+		xVel = speed;
 	}
 	else
 	{
-		player.xVel = 0;
+		xVel = 0;
 	}
 
-	player.posX = Clamp(player.posX, 0.0f, GetScreenWidth() - player.texture.width);
-	player.posY = Clamp(player.posY, 0.0f, GetScreenHeight() - player.texture.height);
+	posX = Clamp(posX, 0.0f, GetScreenWidth() - texture.width);
+	posY = Clamp(posY, 0.0f, GetScreenHeight() - texture.height);
 
-	Vector2 playerVelocity = { player.xVel, player.yVel };
-	Vector2 playerPosVector = player.PlayerPosVector;
+	Vector2 playerVelocity = {xVel, yVel};
+	Vector2 playerPosVector = PlayerPosVector;
 	playerVelocity = Vector2Normalize(playerVelocity);
-	player.xVel = playerVelocity.x * player.speed;
+	xVel = playerVelocity.x * speed;
 
-	player.posX += player.xVel;
-	player.posY += player.yVel;
-
+	posX += xVel;
+	posY += yVel;
 }
 
-void Player::DrawPlayer(Player& player)
+void Player::DrawPlayer()
+	DrawTexture(texture, posX, posY, BLACK);
+}
+
+Bullet* Player::ShootBullets()
 {
-	DrawTexture(player.texture, player.posX, player.posY, BLACK);
+	Bullet* bullet = new Bullet(PlayerPosVector, mouse.mousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, 0, 0.0f, 0.0f);
+	return bullet;
 }
-
-//void Player::ShootBullets()
-//{
-//
-//	
-//
-//	bulletVector.push_back(Bullets({ PlayerPosVector.x + bullets.textureBullet.width / 2, PlayerPosVector.y + bullets.textureBullet.height / 2 },
-//		bullets.bulletDirVector, bullets.textureBullet));
-//
-//}

@@ -10,13 +10,12 @@
 #include "Player.h"
 #include "Mouse.h"
 
-
-//void BulletTexture(Bullets& bullet)
+// void BulletTexture(Bullets& bullet)
 //{
 //	bullet.textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
-//}
+// }
 //
-//void InitBullet(Player& player, Mouse& mouse, Bullets& bullet)
+// void InitBullet(Player& player, Mouse& mouse, Bullets& bullet)
 //{
 //	Vector2 shootDirVector;
 //	shootDirVector = Vector2Subtract(mouse.mousePosVector, player.playerPosVector);
@@ -28,54 +27,67 @@
 //	bullet.shootDirVector = Vector2Normalize(bullet.shootDirVector);
 //	bullet.shootDirVector = Vector2Scale(bullet.shootDirVector, 10);
 //
-//}
-//void DrawBullet(Bullets& bullet)
+// }
+// void DrawBullet(Bullets& bullet)
 //{
 //	DrawTexture(bullet.textureBullet, bullet.bulletSpawnVector.x, bullet.bulletSpawnVector.y, RAYWHITE);
-//}
-//void UpdateBullet(Bullets& bullet)
+// }
+// void UpdateBullet(Bullets& bullet)
 //{
 //	bullet.bulletSpawnVector = Vector2Add(bullet.bulletSpawnVector, bullet.shootDirVector);
 //	DrawTextureV(bullet.textureBullet, bullet.bulletSpawnVector, RAYWHITE);
 //	//DrawTexture(bullet.textureBullet, 100, 100, RAYWHITE);
-//}
+// }
 //
-//void ShootBullet(Player& player, Mouse& mouse, Bullets& bullet)
+// void ShootBullet(Player& player, Mouse& mouse, Bullets& bullet)
 //{
 //	InitBullet(player, mouse, bullet);
 //
-//}
-Bullets::Bullets()
+// }
+Bullets::Bullets(Vector2 bulletSpawnVector, Vector2 mousePos Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax)
 {
-	//Player player = Player();
-	//Mouse mouse = Mouse();
-
-	//spawn = bulletSpawnVector;
-	//bulletSpawnVector = { bulletPosX, bulletPosY };
-	//bulletSpawnVector = player.PlayerPosVector;
-	//direction = bulletDirVector;
-	//bulletDirVector = Vector2Subtract(mouse.mousePosVector, player.PlayerPosVector);
-	//textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
-	//
+	this->bulletSpawnVector = bulletSpawnVector;
+	this->bulletDirVector = Vector2Normalize(GetBulletDir(mousePos));
+	this->textureBullet = textureBullet;
+	this->speed = speed;
+	this->active = true;
+	this->bulletTimer = bulletTimer;
+	this->bulletTimerMax = bulletTimerMax;
 }
-void Bullets::DrawBullet(Bullets& bullet)
+//{
+
+// spawn = bulletSpawnVector;
+// bulletSpawnVector = { bulletPosX, bulletPosY };
+// bulletSpawnVector = player.PlayerPosVector;
+// direction = bulletDirVector;
+// bulletDirVector = Vector2Subtract(mouse.mousePosVector, player.PlayerPosVector);
+// textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
+//
+}
+void Bullets::DrawBullet()
 {
-	DrawTexture(bullet.textureBullet, bullet.bulletPosX, bullet.bulletPosY, RAYWHITE);
+	DrawTexture(textureBullet, bulletPosX, bulletPosY, RAYWHITE);
 }
-
-void Bullets::UpdateBullet(Bullets& bullet)
+Vector2 GetBulletDir(Vector2 mousePos)
 {
-	//bulletSpawnVector = Vector2Add(bulletSpawnVector, shootDirVector);
-	Mouse mouse = Mouse();
-
-	bullet.bulletDirVector = Vector2Subtract(bullet.bulletSpawnVector, mouse.mousePosVector);
+	Vector2 dir = Vector2Subtract(bullet.bulletSpawnVector, mousePos);
+	return dir;
 }
-void Bullets::InitBullets(Bullets& bullet)
+
+void Bullets::UpdateBullet()
+{
+	// bulletSpawnVector = Vector2Add(bulletSpawnVector, shootDirVector);
+	bulletPosX += bulletDirVector.x * speed; //X Achse
+	bulletPosY += bulletDirVector.y * speed; //Y Achse
+}
+
+/*
+void Bullets::InitBullets(Bullets &bullet)
 {
 	Player player = Player();
 	Mouse mouse = Mouse();
 	bullet.t = 2.0f;
-	bullet.bulletSpawnVector = { bullet.bulletPosX, bullet.bulletPosY };
+	bullet.bulletSpawnVector = {bullet.bulletPosX, bullet.bulletPosY};
 	bullet.bulletSpawnVector = player.PlayerPosVector;
 	bullet.bulletPosX = 0;
 	bullet.bulletPosY = 0;
@@ -85,3 +97,4 @@ void Bullets::InitBullets(Bullets& bullet)
 	bullet.active = false;
 	bullet.bulletTimer = t;
 }
+*/

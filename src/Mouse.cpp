@@ -1,5 +1,5 @@
 #pragma once
-#include "Mouse.h"
+#include "h"
 #include <cstdlib>
 #include <iostream>
 #include "raylib.h"
@@ -14,29 +14,29 @@
 //	GetMousePos(*this);
 //	IsCursorOnScreen(*this);
 //}
-void Mouse::GetMousePos(Mouse& mouse)
+//void Mouse::GetMousePos()
+//{
+//	Vector2 mousePosVector = GetMousePosition();
+//}
+
+void Mouse::IsCursorOnScreen()
 {
-	Vector2 mousePosVector = GetMousePosition();
-}
-
-void Mouse::IsCursorOnScreen(Mouse& mouse)
-{
-	mouse.posX = GetMouseX();
-	mouse.posY = GetMouseY();
+	posX = GetMouseX();
+	posY = GetMouseY();
 
 
-	if (mouse.posX >= 0 && mouse.posX <= GetScreenWidth() && mouse.posY >= 0 && mouse.posY <= GetScreenHeight())
+	if (posX >= 0 && posX <= GetScreenWidth() && posY >= 0 && posY <= GetScreenHeight())
 	{
-		mouse.isOnScreen = true;
+		isOnScreen = true;
 	}
 	else
 	{
-		mouse.isOnScreen = false;
+		isOnScreen = false;
 	}
 }
 
-void Mouse::BallOnMouse(Mouse& mouse)
+void Mouse::BallOnMouse()
 {
-	mouse.mousePosVector = GetMousePosition();
-	DrawCircleV(mouse.mousePosVector, 20, RED);
+	mousePosVector = GetMousePosition();
+	DrawCircleV(mousePosVector, 20, RED);
 }

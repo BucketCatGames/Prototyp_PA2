@@ -1,5 +1,6 @@
 #pragma once 
 #include "Player.h"
+#include <vector>
 
 class GameInit
 {
@@ -14,7 +15,7 @@ public:
 	void DeleteBullets();
 private:
 	Player player;
-	Bullets bullets;
+	std::vector<Bullets> bullets;
 	Mouse mouse;
 };
 

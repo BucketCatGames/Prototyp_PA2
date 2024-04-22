@@ -30,9 +30,9 @@ public:
 	
 	Vector2 bulletSpawnVector;
 	Vector2 bulletDirVector;
-	void UpdateBullet(Bullets& bullet);
-	void DrawBullet(Bullets& bullet);
-	void InitBullets(Bullets& bullet);
+	void UpdateBullet();
+	void DrawBullet();
+	void InitBullet();
 	//void Direction();
 	bool active;
 	bool drawable = false;
