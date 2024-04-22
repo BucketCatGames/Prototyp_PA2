@@ -33,7 +33,7 @@ public:
 	Vector2 shootDirVector;
 	void UpdateBullet(Bullets& bullet);
 	void DrawBullet(Bullets& bullet);
-	void InitBullets();
+	void InitBullets(Bullets& bullet);
 	//void Direction();
 	bool active;
 	bool drawable = false;

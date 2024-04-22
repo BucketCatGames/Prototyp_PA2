@@ -18,7 +18,7 @@ void GameInit::InitFunctions()
 {
 	player.InitPlayer(player);
 	mouse.IsCursorOnScreen(mouse);
-	bullets.InitBullets();
+	bullets.InitBullets(bullets);
 }
 
 void GameInit::Update()

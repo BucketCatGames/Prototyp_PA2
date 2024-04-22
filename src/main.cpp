@@ -33,11 +33,9 @@ int main() {
 	{
 		game.HandleInput();
 		game.Update();
-		bullets.UpdateBullet(bullets);
 
 		BeginDrawing();
 		game.Draw();
-		bullets.DrawBullet(bullets);
 
 		EndDrawing();
 	}
