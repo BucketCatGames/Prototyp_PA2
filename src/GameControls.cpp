@@ -29,6 +29,7 @@ void GameInit::InitFunctions()
 void GameInit::Update()
 {
 	mouse.IsCursorOnScreen();
+	player.UpdatePlayer();
 
 	for (int i = 0; i < bullets.size(); i++)
 	{
@@ -36,12 +37,9 @@ void GameInit::Update()
 	}
 
 	player.SetMousePos();
-	player.UpdatePlayer();
 
 	if (bullets.size() > 0)
 	{
-
-
 		std::cout << bullets[0]->bulletPosX << std::endl;
 	}
 }
@@ -54,18 +52,3 @@ void GameInit::HandleInput()
 		bullets.push_back(player.ShootBullets());
 	}
 }
-
-//void GameInit::DeleteBullets()
-//{
-//	for (auto it = player.bulletVector.begin(); it != player.bulletVector.end();)
-//	{
-//		if (it->active == false)
-//		{
-//			it = player.bulletVector.erase(it);
-//		}
-//		else
-//		{
-//			++it;
-//		}
-//	}
-//}

@@ -83,7 +83,10 @@ void Player::DrawPlayer()
 
 Bullets* Player::ShootBullets()
 {
-	Bullets* bullet = new Bullets(PlayerPosVector, MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, 0, 0.0f);
+	
+	Bullets* bullet = new Bullets({ posX + texture.width / 2, posY + texture.height / 2 }, 
+										MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, 0, 0.0f);
+	std::cout <<"lol"<< PlayerPosVector.x << std::endl;
 	return bullet;
 }
 
