@@ -1,5 +1,5 @@
 #pragma once
-#include "h"
+#include "Player.h"
 #include <cstdlib>
 #include <iostream>
 #include "raylib.h"
@@ -7,6 +7,7 @@
 #include <vector>
 #include "config.h"
 #include "cmath"
+#include "Bullets.h"
 
 Player::Player()
 {
@@ -76,11 +77,17 @@ void Player::PlayerInput()
 }
 
 void Player::DrawPlayer()
+{
 	DrawTexture(texture, posX, posY, BLACK);
 }
 
-Bullet* Player::ShootBullets()
+Bullets* Player::ShootBullets()
 {
-	Bullet* bullet = new Bullet(PlayerPosVector, mouse.mousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, 0, 0.0f, 0.0f);
+	Bullets* bullet = new Bullets(PlayerPosVector, MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, 0, 0.0f);
 	return bullet;
+}
+
+void Player::SetMousePos()
+{
+	MousePosVector = GetMousePosition();
 }

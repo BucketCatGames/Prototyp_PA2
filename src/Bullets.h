@@ -24,16 +24,14 @@ void BulletTexture(Bullets& bullet);*/
 class Bullets
 {
 public:
-	Bullets();
+	Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax);
 	float bulletPosX;
 	float bulletPosY;
 	
-	Vector2 bulletSpawnVector;
 	Vector2 bulletDirVector;
 	void UpdateBullet();
 	void DrawBullet();
-	void InitBullet();
-	//void Direction();
+	Vector2 GetBulletDir(Vector2 mousePos);
 	bool active;
 	bool drawable = false;
 	Texture2D textureBullet;

@@ -18,7 +18,6 @@ struct Mouse
 	Vector2 mousePosVector;
 
 	void IsCursorOnScreen();
-	void GetMousePos();
 	void BallOnMouse();
 };
 

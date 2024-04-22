@@ -24,6 +24,7 @@ public:
 
 	Vector2 PlayerPosVector;
 	Vector2 PlayerVelVector;
+	Vector2 MousePosVector;
 	
 	//std::vector<Bullets> bulletVector;
 
@@ -31,7 +32,9 @@ public:
 	void UpdatePlayer();
 	void PlayerInput();
 	void DrawPlayer();
+	void SetMousePos();
 	Bullets* ShootBullets();
+
 	
 private:
 

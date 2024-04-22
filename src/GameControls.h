@@ -12,10 +12,10 @@ public:
 	void Update();
 	void HandleInput();
 	void InitFunctions();
-	void DeleteBullets();
+//	void DeleteBullets();
 private:
 	Player player;
-	std::vector<Bullets> bullets;
+	std::vector<Bullets*> bullets;
 	Mouse mouse;
 };
 
