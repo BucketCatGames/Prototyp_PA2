@@ -25,18 +25,18 @@ public:
 	Vector2 PlayerPosVector;
 	Vector2 PlayerVelVector;
 	
-	std::vector<Bullets> bulletVector;
+	//std::vector<Bullets> bulletVector;
 
 	void InitPlayer(Player& player);
 	void UpdatePlayer(Player& player);
 	void PlayerInput(Player& player);
 	void DrawPlayer(Player& player);
-	void ShootBullets(Player& player, Bullets& bullets);
+	//void ShootBullets();
 	
 private:
 
 	Texture2D texture;
-
+	Bullets bullets;
 	
 };
 

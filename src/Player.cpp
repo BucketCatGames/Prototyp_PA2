@@ -82,8 +82,12 @@ void Player::DrawPlayer(Player& player)
 	DrawTexture(player.texture, player.posX, player.posY, BLACK);
 }
 
-//void Player::ShootBullets(Player& player, Bullets& bullets)
+//void Player::ShootBullets()
 //{
-//	bulletVector.push_back(Bullets({ playerPosVector.x + player.texture.width / 2, playerPosVector.y + player.texture.height / 2 },
-//		bullets.shootDirVector, bullets.textureBullet, -7, player));
+//
+//	
+//
+//	bulletVector.push_back(Bullets({ PlayerPosVector.x + bullets.textureBullet.width / 2, PlayerPosVector.y + bullets.textureBullet.height / 2 },
+//		bullets.bulletDirVector, bullets.textureBullet));
+//
 //}

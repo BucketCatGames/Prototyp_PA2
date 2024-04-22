@@ -8,6 +8,7 @@
 #include "cmath"
 #include "Bullets.h"
 #include "Player.h"
+#include "Mouse.h"
 
 
 //void BulletTexture(Bullets& bullet)
@@ -46,32 +47,28 @@
 //}
 Bullets::Bullets()
 {
+	//Player player = Player();
+	//Mouse mouse = Mouse();
 
+	//spawn = bulletSpawnVector;
+	//bulletSpawnVector = { bulletPosX, bulletPosY };
+	//bulletSpawnVector = player.PlayerPosVector;
+	//direction = bulletDirVector;
+	//bulletDirVector = Vector2Subtract(mouse.mousePosVector, player.PlayerPosVector);
+	//textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
+	//
 }
 void Bullets::DrawBullet(Bullets& bullet)
 {
-		DrawTexture(bullet.textureBullet, bullet.bulletPosX, bullet.bulletPosY, RAYWHITE);
+	DrawTexture(bullet.textureBullet, bullet.bulletPosX, bullet.bulletPosY, RAYWHITE);
 }
 
 void Bullets::UpdateBullet(Bullets& bullet)
 {
 	//bulletSpawnVector = Vector2Add(bulletSpawnVector, shootDirVector);
-	
-		bulletPosY += speed;
+	Mouse mouse = Mouse();
 
-		// }
-		//bulletSpawnVector.y += speed;
-		/*if (active)
-		{
-			float time = 0;
-			time += GetFrameTime();
-			if (time += 2.0f)
-			{
-				active = false;
-			}
-		}*/
-
-	
+	bullet.bulletDirVector = Vector2Subtract(bullet.bulletSpawnVector, mouse.mousePosVector);
 }
 void Bullets::InitBullets(Bullets& bullet)
 {
@@ -82,7 +79,7 @@ void Bullets::InitBullets(Bullets& bullet)
 	bullet.bulletSpawnVector = player.PlayerPosVector;
 	bullet.bulletPosX = 0;
 	bullet.bulletPosY = 0;
-//	bullet.shootDirVector = Vector2Subtract(mouse.mousePosVector, player.PlayerPosVector);
+	//	bullet.shootDirVector = Vector2Subtract(mouse.mousePosVector, player.PlayerPosVector);
 	bullet.textureBullet = LoadTexture("assets/graphics/Probe-Schmetterling.png");
 	bullet.speed = 5.0f;
 	bullet.active = false;

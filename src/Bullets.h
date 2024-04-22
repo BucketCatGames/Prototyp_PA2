@@ -29,7 +29,7 @@ public:
 	float bulletPosY;
 	
 	Vector2 bulletSpawnVector;
-	Vector2 shootDirVector;
+	Vector2 bulletDirVector;
 	void UpdateBullet(Bullets& bullet);
 	void DrawBullet(Bullets& bullet);
 	void InitBullets(Bullets& bullet);

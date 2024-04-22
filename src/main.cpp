@@ -24,7 +24,6 @@ int main() {
 #endif
 
 	GameInit game;
-	Bullets bullets;
 
 	game.InitFunctions();
 

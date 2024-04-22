@@ -11,6 +11,7 @@ public:
 	void Update();
 	void HandleInput();
 	void InitFunctions();
+	void DeleteBullets();
 private:
 	Player player;
 	Bullets bullets;
