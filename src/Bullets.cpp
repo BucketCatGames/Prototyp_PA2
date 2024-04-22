@@ -20,7 +20,7 @@ Bullets::Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureB
 	this->speed = speed;
 	this->active = true;
 	this->bulletTimer = GetFrameTime();
-	this->bulletTimerMax = 0.5f;
+	this->bulletTimerMax = 2.0f;
 }
 
 void Bullets::DrawBullet()
