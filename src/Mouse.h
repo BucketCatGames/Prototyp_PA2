@@ -16,9 +16,8 @@ struct Mouse
 	float posY;
 
 	Vector2 mousePosVector;
-	void IsCursorOnScreen(Mouse& mouse);
-	void GetMousePos(Mouse& mouse);
-	void BallOnMouse(Mouse& mouse);
-
 };
 
+void IsCursorOnScreen(Mouse& mouse);
+void GetMousePos(Mouse& mouse);
+void BallOnMouse(Mouse& mouse);

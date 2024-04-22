@@ -23,27 +23,36 @@ int main() {
 	ToggleFullscreen();
 #endif
 
-	GameInit game;
+	Player player;
+	Mouse mouse;
 	Bullets bullets;
 
-	game.InitFunctions();
 
+	player.InitPlayer(player);
+	
 
 	// Main game loop
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
-		game.HandleInput();
-		game.Update();
+		GetMousePos(mouse);
+		IsCursorOnScreen(mouse);
+		player.PlayerInput(player);
+		player.UpdatePlayer(player);
 
-		bullets.UpdateBullet(bullets); //Warum zum Fick brauch ich dich?
+		
+			bullets.UpdateBullet(bullets);
+			//bullets.drawable = true;
+			 
 
 		BeginDrawing();
 
 		ClearBackground(WHITE);
+		
+		player.DrawPlayer(player);
+		BallOnMouse(mouse);
 
-		game.Draw();
+		bullets.DrawBullet();
 
-		bullets.DrawBullet(bullets); //Warum zum Fick brauch ich dich?
 
 
 		EndDrawing();
