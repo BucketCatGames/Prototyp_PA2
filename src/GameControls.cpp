@@ -35,6 +35,7 @@ void GameInit::Update()
 	{
 		bullets[i]->UpdateBullet();
 		DeleteBullets();
+		DeleteBulletsTimer();
 	}
 
 	player.SetMousePos();
@@ -64,6 +65,12 @@ void GameInit::DeleteBullets()
 			bullets.erase(bullets.begin() + i);
 			std::cout << "Bullet deleted" << std::endl;
 		}
+	}
+}
+void GameInit::DeleteBulletsTimer()
+{
+	for (int i = 0; i < bullets.size(); i++)
+	{
 		bullets[i]->bulletTimer += GetFrameTime();
 		if (bullets[i]->bulletTimer >= bullets[i]->bulletTimerMax)
 		{
