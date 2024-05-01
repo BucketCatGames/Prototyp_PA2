@@ -28,6 +28,7 @@ public:
 	int currentHealth;
 	int maxHealth;
 	int amount;
+	bool isAlive = true;
 
 	//Vectors
 	Vector2 PlayerPosVector;

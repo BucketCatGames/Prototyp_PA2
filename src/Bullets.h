@@ -26,6 +26,7 @@ class Bullets
 public:
 	Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax, 
 		float bulletTimerStop, int bulletCost);
+	~Bullets();
 	float bulletPosX;
 	float bulletPosY;
 	float bulletTimer;

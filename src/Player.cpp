@@ -113,4 +113,10 @@ void Player::AddHealth(int amount)
 void Player::SubHealth(int amount)
 {
 	currentHealth -= amount;
+	if (currentHealth <= 0)
+	{
+		currentHealth = 0;
+		isAlive = false;
+	}
 }
+

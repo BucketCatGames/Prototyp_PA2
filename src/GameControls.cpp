@@ -18,6 +18,10 @@ void GameInit::Draw()
 	{
 		bullet->DrawBullet();
 	}
+	if (player.isAlive == false)
+	{
+		Death();
+	}
 }
 
 void GameInit::InitFunctions()
@@ -30,22 +34,24 @@ void GameInit::InitFunctions()
 void GameInit::Update()
 {
 	mouse.IsCursorOnScreen();
-	player.UpdatePlayer();
 
-	for (int i = 0; i < bullets.size(); i++)
-	{
-		bullets[i]->UpdateBullet();
-		DeleteBullets();
-		DeleteBulletsTimer();
-		BulletsStopMoving();
-	}
+		player.UpdatePlayer();
 
-	player.SetMousePos();
+		for (int i = 0; i < bullets.size(); i++)
+		{
+			bullets[i]->UpdateBullet();
+			DeleteBullets();
+			DeleteBulletsTimer();
+			BulletsStopMoving();
+		}
 
-	if (bullets.size() > 0)
-	{
-		std::cout << bullets[0]->bulletPosX << std::endl;
-	}
+		player.SetMousePos();
+
+		if (bullets.size() > 0)
+		{
+			std::cout << bullets[0]->bulletPosX << std::endl;
+		}
+	
 }
 
 void GameInit::HandleInput()
@@ -93,5 +99,20 @@ void GameInit::BulletsStopMoving()
 		{
 			bullets[i]->speed = 0;
 		}
+	}
+}
+void GameInit::Death()
+{
+	DrawText("You died", GetScreenWidth() / 2, GetScreenHeight() / 2, 50, RED);
+	player.~Player();
+	DeleteAllBullets();
+}
+
+void GameInit::DeleteAllBullets()
+{
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		delete bullets[i];
+		bullets.erase(bullets.begin() + i);
 	}
 }

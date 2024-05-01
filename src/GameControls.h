@@ -15,6 +15,8 @@ public:
 	void DeleteBullets();
 	void DeleteBulletsTimer();
 	void BulletsStopMoving();
+	void Death();
+	void DeleteAllBullets();
 
 private:
 	Player player;

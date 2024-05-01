@@ -25,6 +25,10 @@ Bullets::Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureB
 	this->bulletTimerStop = 2.0f;
 	this->bulletCost = 10.0f;
 }
+Bullets::~Bullets()
+{
+	UnloadTexture(textureBullet);
+}
 
 void Bullets::DrawBullet()
 {
