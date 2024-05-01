@@ -11,7 +11,7 @@
 #include "Mouse.h"
 
 
-Bullets::Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax)
+Bullets::Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax, float bulletTimerStop)
 {
 	this->bulletPosX = bulletSpawnVector.x;
 	this->bulletPosY = bulletSpawnVector.y;
@@ -20,7 +20,8 @@ Bullets::Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureB
 	this->speed = speed;
 	this->active = true;
 	this->bulletTimer = GetFrameTime();
-	this->bulletTimerMax = 2.0f;
+	this->bulletTimerMax = 5.0f;
+	this->bulletTimerStop = 2.0f;
 }
 
 void Bullets::DrawBullet()

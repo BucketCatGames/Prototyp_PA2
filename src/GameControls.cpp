@@ -36,6 +36,7 @@ void GameInit::Update()
 		bullets[i]->UpdateBullet();
 		DeleteBullets();
 		DeleteBulletsTimer();
+		BulletsStopMoving();
 	}
 
 	player.SetMousePos();
@@ -81,4 +82,14 @@ void GameInit::DeleteBulletsTimer()
 	}
 }
 
-
+void GameInit::BulletsStopMoving()
+{
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets[i]->bulletTimer += GetFrameTime();
+		if (bullets[i]->bulletTimer >= bullets[i]->bulletTimerStop)
+		{
+			bullets[i]->speed = 0;
+		}
+	}
+}

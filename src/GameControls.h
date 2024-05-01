@@ -14,6 +14,7 @@ public:
 	void InitFunctions();
 	void DeleteBullets();
 	void DeleteBulletsTimer();
+	void BulletsStopMoving();
 private:
 	Player player;
 	std::vector<Bullets*> bullets;

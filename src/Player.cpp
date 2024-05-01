@@ -85,7 +85,7 @@ Bullets* Player::ShootBullets()
 {
 	
 	Bullets* bullet = new Bullets({ posX + texture.width / 2, posY + texture.height / 2 }, 
-										MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, GetFrameTime(), 0.5f);
+										MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, GetFrameTime(), 5.0f, 2.0f);
 
 	return bullet;
 }
