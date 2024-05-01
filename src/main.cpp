@@ -24,17 +24,25 @@ int main() {
 #endif
 
 	GameInit game;
+	Player player;
+
 
 	game.InitFunctions();
 
 	// Main game loop
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
-		game.HandleInput();
-		game.Update();
+
+			game.HandleInput();
+			game.Update();
+
 
 		BeginDrawing();
-		game.Draw();
+
+			game.Draw();
+	
+		
+
 
 		EndDrawing();
 	}

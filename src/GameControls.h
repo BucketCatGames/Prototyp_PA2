@@ -8,7 +8,10 @@ public:
 	GameInit();
 	~GameInit();
 
+	bool isPlayable;
+
 	void Draw();
+	void DrawDeath();
 	void Update();
 	void HandleInput();
 	void InitFunctions();

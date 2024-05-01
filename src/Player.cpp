@@ -37,13 +37,18 @@ void Player::InitPlayer()
 
 void Player::UpdatePlayer()
 {
-	PlayerPosVector.x += PlayerVelVector.x;
+	if (isAlive == true)
+	{
+		PlayerPosVector.x += PlayerVelVector.x;
 	PlayerPosVector.y += PlayerVelVector.y;
+	}
 }
 
 void Player::PlayerInput()
 {
-	if (IsKeyDown(KEY_W))
+	if(isAlive == true)
+	{
+		if (IsKeyDown(KEY_W))
 	{
 		yVel = -speed;
 	}
@@ -80,10 +85,15 @@ void Player::PlayerInput()
 	posX += xVel;
 	posY += yVel;
 }
+}
 
 void Player::DrawPlayer()
 {
-	DrawTexture(texture, posX, posY, BLACK);
+	if (isAlive == true)
+	{
+		DrawTexture(texture, posX, posY, WHITE);
+	}
+	
 }
 
 void Player::DrawHealth()
@@ -93,11 +103,13 @@ void Player::DrawHealth()
 
 Bullets* Player::ShootBullets()
 {
-	
-	Bullets* bullet = new Bullets({ posX + texture.width / 2, posY + texture.height / 2 }, 
-										MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, GetFrameTime(), 5.0f, 2.0f, 10.0f);
+	if (isAlive == true)
+	{
+		Bullets* bullet = new Bullets({ posX + texture.width / 2, posY + texture.height / 2 },
+			MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, GetFrameTime(), 5.0f, 2.0f, 10.0f);
 
-	return bullet;
+		return bullet;
+	}
 }
 
 void Player::SetMousePos()
