@@ -24,7 +24,7 @@ Bullets::Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureB
 	this->bulletTimerMax = 10.0f;
 	this->bulletTimerStop = 2.0f;
 	this->bulletCost = 10.0f;
-	this->spawnTimer = 1.5f;
+	this->spawnTimer = 2.0f;
 }
 Bullets::~Bullets()
 {
