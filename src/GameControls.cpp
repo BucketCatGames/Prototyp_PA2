@@ -68,7 +68,7 @@ void GameInit::DeleteBullets()
 {
 	for (int i = 0; i < bullets.size(); i++)
 	{
-		if (bullets[i]->bulletPosX > GetScreenWidth() || bullets[i]->bulletPosX < 0 || bullets[i]->bulletPosY > GetScreenHeight() || bullets[i]->bulletPosY < 0)
+		if (bullets[i]->bulletPosX > GetScreenWidth() || bullets[i]->bulletPosX < 0 || bullets[i]->bulletPosY > GetScreenHeight() || bullets[i]->bulletPosY < 0) //?? Was geht hier ab
 		{
 			delete bullets[i];
 			bullets.erase(bullets.begin() + i);
