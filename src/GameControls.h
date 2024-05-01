@@ -11,15 +11,14 @@ public:
 	bool isPlayable;
 
 	void Draw();
-	void DrawDeath();
 	void Update();
 	void HandleInput();
 	void InitFunctions();
 	void DeleteBullets();
 	void DeleteBulletsTimer();
 	void BulletsStopMoving();
-	void Death();
 	void DeleteAllBullets();
+	void CollectBullets();
 
 private:
 	Player player;
