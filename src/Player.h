@@ -13,21 +13,28 @@
 class Player
 {
 public:
+	//Constructor and Destructor
 	Player();
 	~Player();
 
+	//Variables
 	float posX;
 	float posY;
 	float speed;
 	float xVel;
 	float yVel;
 
+	//Health
+	int currentHealth;
+	int maxHealth;
+	int amount;
+
+	//Vectors
 	Vector2 PlayerPosVector;
 	Vector2 PlayerVelVector;
 	Vector2 MousePosVector;
 	
-	//std::vector<Bullets> bulletVector;
-
+	//Playerinitialization
 	void InitPlayer();
 	void UpdatePlayer();
 	void PlayerInput();
@@ -35,6 +42,11 @@ public:
 	void SetMousePos();
 	Bullets* ShootBullets();
 
+	//PlayerHealth
+	void DrawHealth();
+	void AddHealth(int amount);
+	void SubHealth(int amount);
+	void SetHealth(int _health);
 	
 private:
 

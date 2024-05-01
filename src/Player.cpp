@@ -28,6 +28,11 @@ void Player::InitPlayer()
 	texture = LoadTexture("assets/graphics/testimage.png");
 	PlayerPosVector = {posX, posY};
 	PlayerVelVector = {xVel, yVel};
+
+	//Health
+	
+	currentHealth = 100;
+	maxHealth = 100;
 }
 
 void Player::UpdatePlayer()
@@ -81,11 +86,16 @@ void Player::DrawPlayer()
 	DrawTexture(texture, posX, posY, BLACK);
 }
 
+void Player::DrawHealth()
+{
+	DrawText(TextFormat("Health: %i", currentHealth), 10, 10, 20, RED);
+}
+
 Bullets* Player::ShootBullets()
 {
 	
 	Bullets* bullet = new Bullets({ posX + texture.width / 2, posY + texture.height / 2 }, 
-										MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, GetFrameTime(), 5.0f, 2.0f);
+										MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, GetFrameTime(), 5.0f, 2.0f, 10.0f);
 
 	return bullet;
 }
@@ -93,4 +103,14 @@ Bullets* Player::ShootBullets()
 void Player::SetMousePos()
 {
 	MousePosVector = GetMousePosition();
+}
+
+void Player::AddHealth(int amount)
+{
+	currentHealth += amount;
+}
+
+void Player::SubHealth(int amount)
+{
+	currentHealth -= amount;
 }

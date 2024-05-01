@@ -24,13 +24,15 @@ void BulletTexture(Bullets& bullet);*/
 class Bullets
 {
 public:
-	Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax, float bulletTimerStop);
+	Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax, 
+		float bulletTimerStop, int bulletCost);
 	float bulletPosX;
 	float bulletPosY;
 	float bulletTimer;
 	float bulletTimerMax;
 	float bulletTimerStop;
 	int speed;
+	int bulletCost;
 
 	Vector2 bulletDirVector;
 	void UpdateBullet();

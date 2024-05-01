@@ -11,6 +11,7 @@ void GameInit::Draw()
 {
 	ClearBackground(WHITE);
 	player.DrawPlayer();
+	player.DrawHealth();
 	mouse.BallOnMouse();
 	//bullets.DrawBullet(bullets);
 	for (auto& bullet : bullets)
@@ -53,6 +54,7 @@ void GameInit::HandleInput()
 	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 	{
 		bullets.push_back(player.ShootBullets());
+		player.SubHealth(10);
 	}
 }
 
