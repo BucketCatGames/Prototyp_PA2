@@ -115,11 +115,16 @@ void GameInit::CollectBullets()
 {
 	for (int i = 0; i < bullets.size(); i++)
 	{
-		if (CheckCollisionCircles({ player.posX, player.posY }, 60, { bullets[i]->bulletPosX, bullets[i]->bulletPosY }, 24))
+		bullets[i]->bulletTimer += GetFrameTime();
+		if (bullets[i]->bulletTimer >= bullets[i]->spawnTimer) 
 		{
-			delete bullets[i];
-			bullets.erase(bullets.begin() + i);
-			player.AddHealth(10);
+			if (CheckCollisionCircles({ player.posX, player.posY }, 60, { bullets[i]->bulletPosX, bullets[i]->bulletPosY }, 24))
+			{
+				std::cout << "Bullet collected" << std::endl;
+				delete bullets[i];
+				bullets.erase(bullets.begin() + i);
+				player.AddHealth(10);
+			}
 		}
 	}
 }

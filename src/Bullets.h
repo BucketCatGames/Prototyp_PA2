@@ -13,19 +13,21 @@ class Bullets
 {
 public:
 	Bullets(Vector2 bulletSpawnVector, Vector2 mousePos, Texture2D textureBullet, float speed, float bulletTimer, float bulletTimerMax, 
-		float bulletTimerStop, int bulletCost);
+		float bulletTimerStop, int bulletCost, float spawnTimer);
 	~Bullets();
 	float bulletPosX;
 	float bulletPosY;
 	float bulletTimer;
 	float bulletTimerMax;
 	float bulletTimerStop;
+	float spawnTimer;
 	int speed;
 	int bulletCost;
 
 	Vector2 bulletDirVector;
 	void UpdateBullet();
 	void DrawBullet();
+
 	Vector2 GetBulletDir(Vector2 mousePos);
 	bool active;
 	bool drawable = false;
