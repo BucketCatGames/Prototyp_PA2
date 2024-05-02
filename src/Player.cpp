@@ -35,6 +35,21 @@ void Player::InitPlayer()
 	maxHealth = 100;
 }
 
+void Player::AddHealth(int amount)
+{
+	currentHealth += amount;
+}
+
+void Player::SubHealth(int amount)
+{
+	currentHealth -= amount;
+	if (currentHealth <= 0)
+	{
+		currentHealth = 0;
+		isAlive = false;
+	}
+}
+
 void Player::UpdatePlayer()
 {
 	if (isAlive == true)
@@ -91,7 +106,7 @@ void Player::DrawPlayer()
 {
 	if (isAlive == true)
 	{
-		DrawTexture(texture, posX, posY, WHITE);
+		DrawTextureRec(texture,{(float)texture.width/2,float(texture.height/2),32,32}, {posX+texture.width/2, posY+texture.height/2}, WHITE);
 	}
 	
 }
@@ -106,8 +121,8 @@ Bullets* Player::ShootBullets()
 	if (isAlive == true)
 	{
 		Bullets* bullet = new Bullets({ posX + texture.width / 2, posY + texture.height / 2 },
-			MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 5, GetFrameTime(), 10.0f, 2.0f, 10.0f, 2.0f);
-
+			MousePosVector, LoadTexture("assets/graphics/Probe-Schmetterling.png"), 30, GetFrameTime(), 10.0f, 2.0f, 2, 2.0f);
+			SubHealth(bullet->bulletCost);
 		return bullet;
 	}
 }
@@ -115,19 +130,4 @@ Bullets* Player::ShootBullets()
 void Player::SetMousePos()
 {
 	MousePosVector = GetMousePosition();
-}
-
-void Player::AddHealth(int amount)
-{
-	currentHealth += amount;
-}
-
-void Player::SubHealth(int amount)
-{
-	currentHealth -= amount;
-	if (currentHealth <= 0)
-	{
-		currentHealth = 0;
-		isAlive = false;
-	}
 }

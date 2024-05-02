@@ -40,7 +40,7 @@ void GameInit::Update()
 	for (int i = 0; i < bullets.size(); i++)
 	{
 		bullets[i]->UpdateBullet();
-		DeleteBullets();
+		//DeleteBullets();
 		DeleteBulletsTimer();
 		BulletsStopMoving();
 		CollectBullets();
@@ -60,7 +60,7 @@ void GameInit::HandleInput()
 	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && player.isAlive == true)
 	{
 		bullets.push_back(player.ShootBullets());
-		player.SubHealth(10);
+		
 	}
 }
 
@@ -92,13 +92,19 @@ void GameInit::DeleteBulletsTimer()
 
 void GameInit::BulletsStopMoving()
 {
+	float multiplier = 0.01f;
 	for (int i = 0; i < bullets.size(); i++)
 	{
-		bullets[i]->bulletTimer += GetFrameTime();
-		if (bullets[i]->bulletTimer >= bullets[i]->bulletTimerStop)
+		
+		
+			bullets[i]->bulletTimer += GetFrameTime();
+		bullets[i]->speed -= bullets[i]->bulletTimer*multiplier;
+		if(bullets[i]->speed <= 0)
 		{
 			bullets[i]->speed = 0;
 		}
+	
+
 	}
 }
 
