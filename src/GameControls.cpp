@@ -40,6 +40,7 @@ void GameInit::Update()
 	for (int i = 0; i < bullets.size(); i++)
 	{
 		bullets[i]->UpdateBullet();
+		UpdateTimer();
 		//DeleteBullets();
 		DeleteBulletsTimer();
 		BulletsStopMoving();
@@ -76,11 +77,18 @@ void GameInit::DeleteBullets()
 		}
 	}
 }
+void GameInit::UpdateTimer(){
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets[i]->bulletTimer += GetFrameTime();
+	}
+
+}
 void GameInit::DeleteBulletsTimer()
 {
 	for (int i = 0; i < bullets.size(); i++)
 	{
-		bullets[i]->bulletTimer += GetFrameTime();
+		
 		if (bullets[i]->bulletTimer >= bullets[i]->bulletTimerMax)
 		{
 			delete bullets[i];
@@ -97,7 +105,6 @@ void GameInit::BulletsStopMoving()
 	{
 		
 		
-			bullets[i]->bulletTimer += GetFrameTime();
 		bullets[i]->speed -= bullets[i]->bulletTimer*multiplier;
 		if(bullets[i]->speed <= 0)
 		{
@@ -126,10 +133,12 @@ void GameInit::CollectBullets()
 		{
 			if (CheckCollisionCircles({ player.posX, player.posY }, 60, { bullets[i]->bulletPosX, bullets[i]->bulletPosY }, 24))
 			{
+				player.AddHealth(bullets[i]->bulletCost);
 				std::cout << "Bullet collected" << std::endl;
+				
 				delete bullets[i];
 				bullets.erase(bullets.begin() + i);
-				player.AddHealth(10);
+				
 			}
 		}
 	}

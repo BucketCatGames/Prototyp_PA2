@@ -19,6 +19,7 @@ public:
 	void BulletsStopMoving();
 	void DeleteAllBullets();
 	void CollectBullets();
+	void UpdateTimer();
 
 private:
 	Player player;
