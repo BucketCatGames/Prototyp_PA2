@@ -20,6 +20,7 @@ public:
 	void DeleteAllBullets();
 	void CollectBullets();
 	void UpdateTimer();
+	void UpdateBullets();
 
 private:
 	Player player;

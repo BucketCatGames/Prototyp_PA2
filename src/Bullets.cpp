@@ -46,4 +46,13 @@ void Bullets::UpdateBullet()
 {
 	bulletPosX += bulletDirVector.x * speed; //X Achse
 	bulletPosY += bulletDirVector.y * speed; //Y Achse
+
+	if (bulletTimer >= bulletTimerStop)
+	{
+		speed = 0;
+	}
+	else
+	{
+		speed = 5;
+	}
 }

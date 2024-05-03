@@ -37,15 +37,10 @@ void GameInit::Update()
 	mouse.IsCursorOnScreen();
 	player.UpdatePlayer();
 
-	for (int i = 0; i < bullets.size(); i++)
-	{
-		bullets[i]->UpdateBullet();
-		UpdateTimer();
-		//DeleteBullets();
-		DeleteBulletsTimer();
-		BulletsStopMoving();
-		CollectBullets();
-	}
+
+		UpdateBullets();
+		
+	
 
 	player.SetMousePos();
 
@@ -53,6 +48,18 @@ void GameInit::Update()
 	{
 		std::cout << bullets[0]->bulletPosX << std::endl;
 	}
+}
+void GameInit::UpdateBullets()
+{
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets[i]->UpdateBullet();
+	}
+		UpdateTimer();
+		//DeleteBullets();
+		DeleteBulletsTimer();
+		BulletsStopMoving();
+		CollectBullets();
 }
 
 void GameInit::HandleInput()
@@ -82,7 +89,6 @@ void GameInit::UpdateTimer(){
 	{
 		bullets[i]->bulletTimer += GetFrameTime();
 	}
-
 }
 void GameInit::DeleteBulletsTimer()
 {
@@ -103,15 +109,11 @@ void GameInit::BulletsStopMoving()
 	float multiplier = 0.01f;
 	for (int i = 0; i < bullets.size(); i++)
 	{
-		
-		
 		bullets[i]->speed -= bullets[i]->bulletTimer*multiplier;
 		if(bullets[i]->speed <= 0)
 		{
 			bullets[i]->speed = 0;
 		}
-	
-
 	}
 }
 
