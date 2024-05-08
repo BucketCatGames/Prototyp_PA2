@@ -10,6 +10,7 @@
 #include "Mouse.h"
 #include "Bullets.h"
 #include "GameControls.h"
+#include "Enemy.h"
 
 
 
