@@ -131,3 +131,8 @@ void Player::SetMousePos()
 {
 	MousePosVector = GetMousePosition();
 }
+
+Vector2 Player::GetPlayerPos()
+{
+	return PlayerPosVector;
+}

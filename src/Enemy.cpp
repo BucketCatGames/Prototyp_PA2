@@ -30,6 +30,8 @@ void Enemy::setEnemyTecture(Texture2D inEnemyTexture) {
 }
 
 
-void Enemy::movementToPlayer() {
-	
+void Enemy::movementToPlayer() 
+{
+	Vector2 pos = player->GetPlayerPos();
+	enemyMovement = Vector2Subtract(enemyPos, pos);
 }

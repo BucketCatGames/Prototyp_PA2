@@ -48,6 +48,9 @@ public:
 	void AddHealth(int amount);
 	void SubHealth(int amount);
 	void SetHealth(int _health);
+
+	//PlayerPosition
+	Vector2 GetPlayerPos();
 	
 private:
 

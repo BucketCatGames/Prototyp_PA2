@@ -5,6 +5,7 @@
 #include <vector>
 #include "config.h"
 #include "cmath"
+#include "Player.h"
 
 class Enemy {
 protected:
@@ -35,4 +36,6 @@ public:
 
 	void movementToPlayer();  //Hier benötige ich von Gi noch getter uns Setter Funktionen für die playerPos
 
+private:
+	Player* player;
 };
