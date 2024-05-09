@@ -117,7 +117,7 @@ void Player::DrawPlayer()
 		Texture2D spriteRectangles[8];
 		float segmentSize = 360.0f / 8.0f;
 
-		float angle = atan2(playerToMouse.y, playerToMouse.x) * RAD2DEG + 90;
+		float angle = atan2(playerToMouse.y, playerToMouse.x) * RAD2DEG + 90 + 45;
 		angle = fmodf(angle, 360.0f);
 		
 		if (angle < 0)
