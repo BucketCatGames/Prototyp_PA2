@@ -37,7 +37,6 @@ void GameInit::Update()
 	mouse.IsCursorOnScreen();
 	player.UpdatePlayer();
 
-
 		UpdateBullets();
 		
 	

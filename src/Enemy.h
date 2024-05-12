@@ -1,3 +1,4 @@
+#pragma once
 #include <cstdlib>
 #include <iostream>
 #include <raylib.h>
@@ -6,8 +7,11 @@
 #include "config.h"
 #include "cmath"
 #include "Player.h"
+#include <iostream>
+#include <string>
 
-class Enemy {
+class Enemy 
+{
 protected:
 	int enemyHealth;
 	int enemySpeed;
@@ -19,6 +23,15 @@ protected:
 
 	Texture2D enemyTexture;
 public:
+	Enemy() {
+		enemyPos.x = GetRandomValue(1,GetScreenWidth());
+		enemyPos.y = GetRandomValue(1,GetScreenHeight());
+		this->enemyTexture = LoadTexture("assets/graphics/Enemy.png");
+		this->isAlive = true;
+		this->enemyHealth = 100;
+		this->enemySpeed = 5;
+	}
+
 	void setEnemyHealth(int);
 	int getEnemyHealth();
 
@@ -31,11 +44,12 @@ public:
 	void setEnemyAliveState(bool);
 	bool getEnemyAliveState();
 
-	void setEnemyTecture(Texture2D);
+	void setEnemyTexture(Texture2D);
 
 
-	void movementToPlayer();  //Hier benötige ich von Gi noch getter uns Setter Funktionen für die playerPos
+	void movementToPlayer(Player& player);  //Hier benötige ich von Gi noch getter uns Setter Funktionen für die playerPos
 
+	void drawEnemy();
 private:
 	Player* player;
 };

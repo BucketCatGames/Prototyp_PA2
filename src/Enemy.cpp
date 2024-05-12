@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Player.h"
 
 
 void Enemy::setEnemyHealth(int inEnemyHealth) {
@@ -25,13 +26,18 @@ void Enemy::setEnemyAliveState(bool inAliveState) {
 bool Enemy::getEnemyAliveState() {
 	return this->isAlive;
 }
-void Enemy::setEnemyTecture(Texture2D inEnemyTexture) {
+void Enemy::setEnemyTexture(Texture2D inEnemyTexture) {
 	this->enemyTexture = inEnemyTexture;
 }
 
 
-void Enemy::movementToPlayer() 
+void Enemy::movementToPlayer(Player& player) 
 {
-	Vector2 pos = player->GetPlayerPos();
-	enemyMovement = Vector2Subtract(enemyPos, pos);
+	Vector2 pos = player.GetPlayerPos();
+	this->enemyMovement  = Vector2Normalize(Vector2Subtract(pos, enemyPos));  //berechnet Richtung des Vectors und normalisiert ihn
+	this->enemyPos = Vector2Add(getEnemyPos(), enemyMovement);
 }
+void Enemy::drawEnemy() {
+	DrawTexture(this->enemyTexture, enemyPos.x, enemyPos.y, WHITE);
+}
+

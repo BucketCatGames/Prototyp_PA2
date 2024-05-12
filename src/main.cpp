@@ -26,6 +26,7 @@ int main() {
 
 	GameInit game;
 	Player player;
+	Enemy enemy;
 
 
 	game.InitFunctions();
@@ -33,15 +34,15 @@ int main() {
 	// Main game loop
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
-
+			
 			game.HandleInput();
 			game.Update();
-
+			enemy.movementToPlayer(player);
 
 		BeginDrawing();
 
 			game.Draw();
-	
+			enemy.drawEnemy();
 		
 
 
