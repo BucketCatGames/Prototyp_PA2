@@ -33,7 +33,9 @@ void Enemy::setEnemyTexture(Texture2D inEnemyTexture) {
 
 void Enemy::movementToPlayer(Player& player) 
 {
-	Vector2 pos = player.GetPlayerPos();
+	Vector2 pos;
+	pos.x = player.GetPlayerPosX();
+	pos.y = player.GetPlayerPosY();
 	this->enemyMovement  = Vector2Normalize(Vector2Subtract(pos, enemyPos));  //berechnet Richtung des Vectors und normalisiert ihn
 	this->enemyPos = Vector2Add(getEnemyPos(), enemyMovement);
 }

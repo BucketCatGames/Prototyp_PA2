@@ -37,7 +37,7 @@ public:
 	
 	//Playerinitialization
 	void InitPlayer();
-	void UpdatePlayer();
+	//void UpdatePlayer();
 	void PlayerInput();
 	void DrawPlayer();
 	void SetMousePos();
@@ -50,7 +50,8 @@ public:
 	void SetHealth(int _health);
 
 	//PlayerPosition
-	Vector2 GetPlayerPos();
+	float GetPlayerPosX();
+	float GetPlayerPosY();
 	
 private:
 

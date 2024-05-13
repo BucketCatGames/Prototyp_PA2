@@ -13,6 +13,7 @@ void GameInit::Draw()
 	player.DrawPlayer();
 	player.DrawHealth();
 	mouse.BallOnMouse();
+	enemy.drawEnemy();
 	//bullets.DrawBullet(bullets);
 	for (auto& bullet : bullets)
 	{
@@ -35,8 +36,8 @@ void GameInit::InitFunctions()
 void GameInit::Update()
 {
 	mouse.IsCursorOnScreen();
-	player.UpdatePlayer();
-
+	/*player.UpdatePlayer();*/ 
+	enemy.movementToPlayer(player);
 		UpdateBullets();
 		
 	

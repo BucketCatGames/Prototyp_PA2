@@ -25,6 +25,7 @@ public:
 
 private:
 	Player player;
+	Enemy enemy;
 	std::vector<Bullets*> bullets;
 	Mouse mouse;
 };

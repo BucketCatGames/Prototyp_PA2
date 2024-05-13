@@ -25,8 +25,6 @@ int main() {
 #endif
 
 	GameInit game;
-	Player player;
-	Enemy enemy;
 
 
 	game.InitFunctions();
@@ -37,12 +35,12 @@ int main() {
 			
 			game.HandleInput();
 			game.Update();
-			enemy.movementToPlayer(player);
+			
 
 		BeginDrawing();
 
 			game.Draw();
-			enemy.drawEnemy();
+			
 		
 
 

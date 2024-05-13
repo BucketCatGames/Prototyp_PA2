@@ -20,7 +20,7 @@ Player::~Player()
 
 void Player::InitPlayer()
 {
-	posX = 100;
+	posX = 600;
 	posY = 100;
 	speed = 5;
 	xVel = 0;
@@ -50,14 +50,14 @@ void Player::SubHealth(int amount)
 	}
 }
 
-void Player::UpdatePlayer()
+/* void Player::UpdatePlayer()
 {
 	if (isAlive == true)
 	{
 		PlayerPosVector.x += PlayerVelVector.x;
 		PlayerPosVector.y += PlayerVelVector.y;
 	}
-}
+} */								//	Das hier hat nichts gemacht. Ich habs entfernt ;D -Alex
 
 void Player::PlayerInput()
 {
@@ -162,7 +162,11 @@ void Player::SetMousePos()
 	MousePosVector = GetMousePosition();
 }
 
-Vector2 Player::GetPlayerPos()
+float Player::GetPlayerPosX()
 {
-	return PlayerPosVector;
+	return posX;
+}
+float Player::GetPlayerPosY()
+{
+	return posY;
 }

@@ -51,5 +51,4 @@ public:
 
 	void drawEnemy();
 private:
-	Player* player;
 };
