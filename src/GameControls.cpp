@@ -140,7 +140,6 @@ void GameInit::CollectBullets()
 				
 				delete bullets[i];
 				bullets.erase(bullets.begin() + i);
-				
 			}
 		}
 	}
