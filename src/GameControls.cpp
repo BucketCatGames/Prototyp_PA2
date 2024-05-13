@@ -133,7 +133,7 @@ void GameInit::CollectBullets()
 		bullets[i]->bulletTimer += GetFrameTime();
 		if (bullets[i]->bulletTimer >= bullets[i]->spawnTimer) 
 		{
-			if (CheckCollisionCircles({ player.posX, player.posY }, 60, { bullets[i]->bulletPosX, bullets[i]->bulletPosY }, 24))
+			if (CheckCollisionCircles({ player.posX+25, player.posY+25}, 35, { bullets[i]->bulletPosX+13, bullets[i]->bulletPosY+13 }, 24))
 			{
 				player.AddHealth(bullets[i]->bulletCost);
 				std::cout << "Bullet collected" << std::endl;
