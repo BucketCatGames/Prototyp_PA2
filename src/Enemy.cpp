@@ -43,3 +43,4 @@ void Enemy::drawEnemy() {
 	DrawTexture(this->enemyTexture, enemyPos.x, enemyPos.y, WHITE);
 }
 
+

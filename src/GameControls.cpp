@@ -13,8 +13,11 @@ void GameInit::Draw()
 	player.DrawPlayer();
 	player.DrawHealth();
 	mouse.BallOnMouse();
-	enemy.drawEnemy();
+	
 	//bullets.DrawBullet(bullets);
+	for (int i = 0; i < enemy.size(); i++) {	//drawt alle Enemies
+		enemy[i].drawEnemy();
+	}
 	for (auto& bullet : bullets)
 	{
 		bullet->DrawBullet();
@@ -37,17 +40,19 @@ void GameInit::Update()
 {
 	mouse.IsCursorOnScreen();
 	/*player.UpdatePlayer();*/ 
-	enemy.movementToPlayer(player);
+	for (int i = 0; i < enemy.size();i++) {			//aktualisiert das movement von jedem Gegner
+		enemy[i].movementToPlayer(player);
+	}
 		UpdateBullets();
 		
-	
-
 	player.SetMousePos();
 
 	if (bullets.size() > 0)
 	{
 		std::cout << bullets[0]->bulletPosX << std::endl;
 	}
+
+	SpawnEnemy();									//checkt Enemy anzahl und spawnt Enemies nach
 }
 void GameInit::UpdateBullets()
 {
@@ -142,5 +147,13 @@ void GameInit::CollectBullets()
 				bullets.erase(bullets.begin() + i);
 			}
 		}
+	}
+}
+void GameInit::SpawnEnemy()
+{
+	if (enemy.size() < maxEnemyCount)
+	{
+		Enemy newEnemy;
+		enemy.push_back(newEnemy);
 	}
 }

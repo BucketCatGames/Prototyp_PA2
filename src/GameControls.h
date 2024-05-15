@@ -22,10 +22,12 @@ public:
 	void CollectBullets();
 	void UpdateTimer();
 	void UpdateBullets();
-
+	void EnemyBulletCollision();
+	void SpawnEnemy();
 private:
+	int maxEnemyCount = 3;
 	Player player;
-	Enemy enemy;
+	std::vector<Enemy> enemy;
 	std::vector<Bullets*> bullets;
 	Mouse mouse;
 };

@@ -46,9 +46,9 @@ public:
 
 	void setEnemyTexture(Texture2D);
 
-
 	void movementToPlayer(Player& player);  //Hier benötige ich von Gi noch getter uns Setter Funktionen für die playerPos
 
 	void drawEnemy();
+
 private:
 };
