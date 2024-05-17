@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "iostream"
 
+
 GameInit::GameInit() {}
 
 GameInit::~GameInit() {}
@@ -21,6 +22,14 @@ void GameInit::Draw()
 	{
 		for (int i = 0; i < enemy.size(); i++) {	//drawt alle Enemies
 			enemy[i].drawEnemy();
+		}
+	}
+	else
+	{
+		exitGate.drawPressurePlateTexture();
+		if (exitGate.getIsPressedState() == true)
+		{
+			DrawText("You escaped the dungeon!", 200, 50, 50, RED);
 		}
 	}
 	for (auto& bullet : bullets)
@@ -62,6 +71,7 @@ void GameInit::Update()
 	UpdateEnemy();								// das hier nuked momentan das Spiel
 	PlayerMovableObjectCollision();
 	MovableObjectPressurePlateCollision();
+	PlayerExitGateCollision();
 }
 void GameInit::UpdateBullets()
 {
@@ -222,4 +232,15 @@ void GameInit::MovableObjectPressurePlateCollision()
 		pressurePlate.setPressedState(false);
 	}
 
+}
+void GameInit::PlayerExitGateCollision()
+{
+	if (CheckCollisionCircles({ player.posX + 25, player.posY + 25 }, 35, { exitGate.getPosX() + 25, exitGate.getPosY() + 25 }, 15))
+	{
+		exitGate.setPressedState(true);
+	}
+	else
+	{
+		exitGate.setPressedState(false);
+	}
 }
