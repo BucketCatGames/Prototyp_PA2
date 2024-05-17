@@ -27,6 +27,7 @@ public:
 	void EnemyBulletCollision();
 	void SpawnEnemy();
 	void UpdateEnemy();
+	void PlayerMovableObjectCollision();
 private:
 	int maxEnemyCount = 3;
 	Player player;

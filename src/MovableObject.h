@@ -22,4 +22,9 @@ public:
 		pos.y = 300;
 	}
 	void drawMovableObjectTexture();
+	void setPos(Vector2);
+	Vector2 getPos();
+	float getPosX();
+	float getPosY();
+	
 };

@@ -57,6 +57,7 @@ void GameInit::Update()
 	SpawnEnemy();									//checkt Enemy anzahl und spawnt Enemies nach
 	EnemyBulletCollision();
 	UpdateEnemy();								// das hier nuked momentan das Spiel
+	PlayerMovableObjectCollision();
 }
 void GameInit::UpdateBullets()
 {
@@ -173,7 +174,7 @@ void GameInit::EnemyBulletCollision() {				//checkt ob Enemy von einer Bullet ge
 		}
 	}
 }
-void GameInit::UpdateEnemy()
+void GameInit::UpdateEnemy()						//deleted enemy 
 {
 	for (int i = 0; i < enemy.size(); i++)
 	{
@@ -182,5 +183,16 @@ void GameInit::UpdateEnemy()
 			enemy[i].deleteEnemyTexture();
 			enemy.erase(enemy.begin() + i);
 		}
+	}
+}
+void GameInit::PlayerMovableObjectCollision()
+{
+	if (CheckCollisionCircles({ player.posX + 25, player.posY + 25 }, 35, { movableObject.getPosX() + 10,movableObject.getPosY() + 10 }, 18))
+	{
+		Vector2 playerPos = {player.GetPlayerPosX(), player.GetPlayerPosY()};
+		Vector2 objectPos = {movableObject.getPosX(),movableObject.getPosY()};
+
+		Vector2 objectPushDirection = Vector2Normalize(Vector2Subtract(objectPos, playerPos));
+		movableObject.setPos(Vector2Add(movableObject.getPos(), objectPushDirection));
 	}
 }
