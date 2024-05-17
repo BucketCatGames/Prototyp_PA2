@@ -17,8 +17,11 @@ void GameInit::Draw()
 	movableObject.drawMovableObjectTexture();
 	
 	//bullets.DrawBullet(bullets);
-	for (int i = 0; i < enemy.size(); i++) {	//drawt alle Enemies
-		enemy[i].drawEnemy();
+	if (pressurePlate.getIsPressedState() == false)
+	{
+		for (int i = 0; i < enemy.size(); i++) {	//drawt alle Enemies
+			enemy[i].drawEnemy();
+		}
 	}
 	for (auto& bullet : bullets)
 	{
@@ -58,6 +61,7 @@ void GameInit::Update()
 	EnemyBulletCollision();
 	UpdateEnemy();								// das hier nuked momentan das Spiel
 	PlayerMovableObjectCollision();
+	MovableObjectPressurePlateCollision();
 }
 void GameInit::UpdateBullets()
 {
@@ -176,12 +180,23 @@ void GameInit::EnemyBulletCollision() {				//checkt ob Enemy von einer Bullet ge
 }
 void GameInit::UpdateEnemy()						//deleted enemy 
 {
-	for (int i = 0; i < enemy.size(); i++)
+	if(pressurePlate.getIsPressedState() == false)
 	{
-		if (enemy[i].getEnemyHealth() == 0)
+		for (int i = 0; i < enemy.size(); i++)
+		{
+			if (enemy[i].getEnemyHealth() == 0)
+			{
+				enemy[i].deleteEnemyTexture();
+				enemy.erase(enemy.begin() + i);
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < enemy.size(); i++)
 		{
 			enemy[i].deleteEnemyTexture();
-			enemy.erase(enemy.begin() + i);
+			enemy.erase(enemy.begin() + i);			
 		}
 	}
 }
@@ -195,4 +210,16 @@ void GameInit::PlayerMovableObjectCollision()
 		Vector2 objectPushDirection = Vector2Normalize(Vector2Subtract(objectPos, playerPos));
 		movableObject.setPos(Vector2Add(movableObject.getPos(), objectPushDirection));
 	}
+}
+void GameInit::MovableObjectPressurePlateCollision()
+{
+	if (CheckCollisionCircles({ movableObject.getPosX() + 10, movableObject.getPosY() + 10 }, 18, {pressurePlate.getPosX()+25, pressurePlate.getPosY()+25}, 35))
+	{
+		pressurePlate.setPressedState(true);
+	}
+	else
+	{
+		pressurePlate.setPressedState(false);
+	}
+
 }

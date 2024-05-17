@@ -28,6 +28,8 @@ public:
 	void SpawnEnemy();
 	void UpdateEnemy();
 	void PlayerMovableObjectCollision();
+	void MovableObjectPressurePlateCollision();
+
 private:
 	int maxEnemyCount = 3;
 	Player player;

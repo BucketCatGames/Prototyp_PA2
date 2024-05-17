@@ -23,5 +23,9 @@ public:
 		this->isPressed = false;
 	}
 	void drawPressurePlateTexture();
+	float getPosX();
+	float getPosY();
+	bool getIsPressedState();
+	void setPressedState(bool);
 
 };
