@@ -2,6 +2,8 @@
 #include "Player.h"
 #include <vector>
 #include "Enemy.h"
+#include "PressurePlate.h"
+#include "MovableObject.h"
 
 class GameInit
 {
@@ -31,5 +33,7 @@ private:
 	std::vector<Enemy> enemy;
 	std::vector<Bullets*> bullets;
 	Mouse mouse;
+	PressurePlate pressurePlate;
+	MovableObject movableObject;
 };
 

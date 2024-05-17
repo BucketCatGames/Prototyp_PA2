@@ -13,6 +13,8 @@ void GameInit::Draw()
 	player.DrawPlayer();
 	player.DrawHealth();
 	mouse.BallOnMouse();
+	pressurePlate.drawPressurePlateTexture();
+	movableObject.drawMovableObjectTexture();
 	
 	//bullets.DrawBullet(bullets);
 	for (int i = 0; i < enemy.size(); i++) {	//drawt alle Enemies
