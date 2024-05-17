@@ -20,6 +20,12 @@ void Enemy::setEnemyPos(Vector2 inEnemyPos) {
 Vector2 Enemy::getEnemyPos() {
 	return enemyPos;
 }
+float Enemy::getEnemyPosX() {
+	return this->enemyPos.x;
+}
+float Enemy::getEnemyPosY() {
+	return this->enemyPos.y;
+}
 void Enemy::setEnemyAliveState(bool inAliveState) {
 	this->isAlive = inAliveState;
 }
@@ -41,6 +47,11 @@ void Enemy::movementToPlayer(Player& player)
 }
 void Enemy::drawEnemy() {
 	DrawTexture(this->enemyTexture, enemyPos.x, enemyPos.y, WHITE);
+}
+void Enemy::deleteEnemyTexture()
+{
+	UnloadTexture(enemyTexture);
+	
 }
 
 

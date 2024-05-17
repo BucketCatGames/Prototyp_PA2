@@ -40,6 +40,8 @@ public:
 
 	void setEnemyPos(Vector2);
 	Vector2 getEnemyPos();
+	float getEnemyPosX();
+	float getEnemyPosY();
 
 	void setEnemyAliveState(bool);
 	bool getEnemyAliveState();
@@ -49,6 +51,8 @@ public:
 	void movementToPlayer(Player& player);  //Hier benötige ich von Gi noch getter uns Setter Funktionen für die playerPos
 
 	void drawEnemy();
+
+	void deleteEnemyTexture();
 
 private:
 };

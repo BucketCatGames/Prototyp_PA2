@@ -53,6 +53,8 @@ void GameInit::Update()
 	}
 
 	SpawnEnemy();									//checkt Enemy anzahl und spawnt Enemies nach
+	EnemyBulletCollision();
+	UpdateEnemy();								// das hier nuked momentan das Spiel
 }
 void GameInit::UpdateBullets()
 {
@@ -124,18 +126,18 @@ void GameInit::BulletsStopMoving()
 
 void GameInit::DeleteAllBullets()
 {
-	for (int i = 0; i < bullets.size(); i++)
+	for (int i = 0; i < bullets.size(); i++) 
 	{
 		delete bullets[i];
-		bullets.erase(bullets.begin() + i);
+		bullets.erase(bullets.begin() + i); 
 	}
 }
 
-void GameInit::CollectBullets()
+void GameInit::CollectBullets() 
 {
-	for (int i = 0; i < bullets.size(); i++)
+	for (int i = 0; i < bullets.size(); i++) 
 	{
-		bullets[i]->bulletTimer += GetFrameTime();
+		bullets[i]->bulletTimer += GetFrameTime(); 
 		if (bullets[i]->bulletTimer >= bullets[i]->spawnTimer) 
 		{
 			if (CheckCollisionCircles({ player.posX+25, player.posY+25}, 35, { bullets[i]->bulletPosX+13, bullets[i]->bulletPosY+13 }, 24))
@@ -143,8 +145,8 @@ void GameInit::CollectBullets()
 				player.AddHealth(bullets[i]->bulletCost);
 				std::cout << "Bullet collected" << std::endl;
 				
-				delete bullets[i];
-				bullets.erase(bullets.begin() + i);
+				delete bullets[i]; 
+				bullets.erase(bullets.begin() + i); 
 			}
 		}
 	}
@@ -155,5 +157,28 @@ void GameInit::SpawnEnemy()
 	{
 		Enemy newEnemy;
 		enemy.push_back(newEnemy);
+	}
+}
+void GameInit::EnemyBulletCollision() {				//checkt ob Enemy von einer Bullet getroffen wurde und setzt bei Collis
+	for (int i = 0; i < enemy.size(); i++)
+	{
+		for (int u = 0; u < bullets.size(); u++)
+		{
+			if (CheckCollisionCircles({ enemy[i].getEnemyPosX() + 60, enemy[i].getEnemyPosY() + 60 }, 60, { bullets[u]->bulletPosX + 13, bullets[u]->bulletPosY + 13 }, 24))
+			{
+				enemy[i].setEnemyHealth(0);		
+			}
+		}
+	}
+}
+void GameInit::UpdateEnemy()
+{
+	for (int i = 0; i < enemy.size(); i++)
+	{
+		if (enemy[i].getEnemyHealth() == 0)
+		{
+			enemy[i].deleteEnemyTexture();
+			enemy.erase(enemy.begin() + i);
+		}
 	}
 }
