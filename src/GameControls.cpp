@@ -174,6 +174,11 @@ void GameInit::SpawnEnemy()
 	{
 		Enemy newEnemy;
 		enemy.push_back(newEnemy);
+		if (Vector2Length(Vector2Subtract(newEnemy.getEnemyPos(), { player.GetPlayerPosX(),player.GetPlayerPosY() })) < 250) //Mindestabstand für das Respawnen der Enemies vom Spieler ist 250
+		{
+			enemy.pop_back();
+		}
+		
 	}
 }
 void GameInit::EnemyBulletCollision() {				//checkt ob Enemy von einer Bullet getroffen wurde und setzt bei Collis
