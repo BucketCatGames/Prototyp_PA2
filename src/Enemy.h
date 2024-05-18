@@ -26,7 +26,7 @@ public:
 	Enemy() {
 		enemyPos.x = GetRandomValue(1,GetScreenWidth());
 		enemyPos.y = GetRandomValue(1,GetScreenHeight());
-		this->enemyTexture = LoadTexture("assets/graphics/Enemy.png");
+		this->enemyTexture = LoadTexture("C:assets/graphics/Bones_shadow1_1.png");
 		this->isAlive = true;
 		this->enemyHealth = 100;
 		this->enemySpeed = 5;
