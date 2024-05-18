@@ -26,5 +26,4 @@ public:
 	Vector2 getPos();
 	float getPosX();
 	float getPosY();
-	
 };
