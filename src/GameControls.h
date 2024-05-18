@@ -31,6 +31,7 @@ public:
 	void PlayerMovableObjectCollision();
 	void MovableObjectPressurePlateCollision();
 	void PlayerExitGateCollision();
+	void PlayerEnemyCollision();
 
 private:
 	int maxEnemyCount = 3;

@@ -40,12 +40,12 @@ void Player::AddHealth(int amount)
 	currentHealth += amount;
 }
 
-void Player::SubHealth(int amount)
+void Player::SubHealth(int amount)		//Das hier wird nur aufgerufen wenn der Spieler schieﬂt. Der Spieler kann also nur sterben wenn er durch bullets leben verliert.  
 {
-	currentHealth -= amount;
+	currentHealth -= amount;			//Bei dem "nicht Prototypen" sollte hier einfach eine Update healthstate funktion sein die generell checkt ob der Spieler am leben ist
 	if (currentHealth <= 0)
 	{
-		currentHealth = 0;
+		currentHealth = 0;				//ich habe die funktion switchHealthstate() einfach seperat mal inplementiert	-Alex
 		isAlive = false;
 	}
 }
@@ -169,4 +169,15 @@ float Player::GetPlayerPosX()
 float Player::GetPlayerPosY()
 {
 	return posY;
+}
+void Player::SetHealth(int _health)
+{
+	this->currentHealth = _health;
+}
+void Player::switchHealthState()
+{
+	if (this->currentHealth <= 0)
+	{
+		this->isAlive = false;
+	}
 }

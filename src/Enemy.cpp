@@ -44,7 +44,7 @@ void Enemy::movementToPlayer(Player& player)
 	this->enemyPos = Vector2Add(getEnemyPos(), enemyMovement);
 }
 void Enemy::drawEnemy() {
-	DrawTexture(this->enemyTexture, enemyPos.x, enemyPos.y, WHITE);
+	DrawTexture(this->enemyTexture, enemyPos.x-100, enemyPos.y-100, WHITE);
 }
 void Enemy::deleteEnemyTexture()
 {

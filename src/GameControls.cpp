@@ -60,6 +60,7 @@ void GameInit::Update()
 		UpdateBullets();
 		
 	player.SetMousePos();
+	player.switchHealthState();
 
 	if (bullets.size() > 0)
 	{
@@ -72,6 +73,7 @@ void GameInit::Update()
 	PlayerMovableObjectCollision();
 	MovableObjectPressurePlateCollision();
 	PlayerExitGateCollision();
+	PlayerEnemyCollision();
 }
 void GameInit::UpdateBullets()
 {
@@ -186,7 +188,7 @@ void GameInit::EnemyBulletCollision() {				//checkt ob Enemy von einer Bullet ge
 	{
 		for (int u = 0; u < bullets.size(); u++)
 		{
-			if (CheckCollisionCircles({ enemy[i].getEnemyPosX() + 60, enemy[i].getEnemyPosY() + 60 }, 60, { bullets[u]->bulletPosX + 13, bullets[u]->bulletPosY + 13 }, 24))
+			if (CheckCollisionCircles({ enemy[i].getEnemyPosX() + 20, enemy[i].getEnemyPosY()+20} , 60, { bullets[u]->bulletPosX + 13, bullets[u]->bulletPosY + 13 }, 24))
 			{
 				enemy[i].setEnemyHealth(0);		
 			}
@@ -240,12 +242,22 @@ void GameInit::MovableObjectPressurePlateCollision()
 }
 void GameInit::PlayerExitGateCollision()
 {
-	if (CheckCollisionCircles({ player.posX + 25, player.posY + 25 }, 35, { exitGate.getPosX() + 25, exitGate.getPosY() + 25 }, 15))
+	if (CheckCollisionCircles({ player.posX + 25, player.posY + 25 }, 35, { exitGate.getPosX() + 20, exitGate.getPosY() + 20 }, 15))
 	{
 		exitGate.setPressedState(true);
 	}
 	else
 	{
 		exitGate.setPressedState(false);
+	}
+}
+void GameInit::PlayerEnemyCollision()
+{
+	for (int i = 0; i < enemy.size(); i++)
+	{
+		if (CheckCollisionCircles({ player.posX + 25, player.posY + 25 }, 35, { enemy[i].getEnemyPosX() + 25 , enemy[i].getEnemyPosY() + 25 }, 60))
+		{
+			player.SetHealth(0);
+		}
 	}
 }

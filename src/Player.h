@@ -48,6 +48,7 @@ public:
 	void AddHealth(int amount);
 	void SubHealth(int amount);
 	void SetHealth(int _health);
+	void switchHealthState();
 
 	//PlayerPosition
 	float GetPlayerPosX();
