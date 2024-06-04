@@ -34,7 +34,7 @@ public:
 	Vector2 PlayerPosVector;
 	Vector2 PlayerVelVector;
 	Vector2 MousePosVector;
-	
+
 	//Playerinitialization
 	void InitPlayer();
 	//void UpdatePlayer();
@@ -53,11 +53,11 @@ public:
 	//PlayerPosition
 	float GetPlayerPosX();
 	float GetPlayerPosY();
-	
+
 private:
 
 	Texture2D texture;
-	
-	
+
+
 };
 

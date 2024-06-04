@@ -50,15 +50,6 @@ void Player::SubHealth(int amount)		//Das hier wird nur aufgerufen wenn der Spie
 	}
 }
 
-/* void Player::UpdatePlayer()
-{
-	if (isAlive == true)
-	{
-		PlayerPosVector.x += PlayerVelVector.x;
-		PlayerPosVector.y += PlayerVelVector.y;
-	}
-} */								//	Das hier hat nichts gemacht. Ich habs entfernt ;D -Alex
-
 void Player::PlayerInput()
 {
 	if (isAlive == true)
@@ -106,20 +97,13 @@ void Player::DrawPlayer()
 {
 	if (isAlive == true)
 	{
-		//DrawTextureRec(texture,{(float)texture.width/2,float(texture.height/2),32,32}, {posX+texture.width/2, posY+texture.height/2}, WHITE);
-		//Texture2D test = LoadTexture("assets/graphics/vor.png");
-		//DrawTexture(test, posX, posY, WHITE);
-		//DrawTextureEx(test, PlayerPosVector, 0.0f, 2.0f, WHITE);
-		//DrawTextureEx(test, { posX, posY }, 0.0f, 5.0f, WHITE);
-
-
-		Vector2 playerToMouse = Vector2Subtract(MousePosVector, {posX, posY});
+		Vector2 playerToMouse = Vector2Subtract(MousePosVector, { posX, posY });
 		Texture2D spriteRectangles[8];
 		float segmentSize = 360.0f / 8.0f;
 
 		float angle = atan2(playerToMouse.y, playerToMouse.x) * RAD2DEG + 90 + 45;
 		angle = fmodf(angle, 360.0f);
-		
+
 		if (angle < 0)
 		{
 			angle += 360.0f;
@@ -138,7 +122,6 @@ void Player::DrawPlayer()
 
 		DrawTextureEx(spriteRectangles[spriteIndex], { posX, posY }, 0.0f, 5.0f, WHITE);
 	}
-
 }
 
 void Player::DrawHealth()
